@@ -1,116 +1,67 @@
 ﻿<!doctype html>
-<html lang="fr" ng-app="WisApp">
+<html lang="fr" ng-app="wisApp">
 <head>
+
     <link href="../Scripts/css/bootstrap.min.css" rel="stylesheet">
     <link href="../Scripts/css/ripples.min.css" rel="stylesheet">
     <link href="../Scripts/css/css_tony.css" rel="stylesheet">
     <link href="../Scripts/css/material-wfont.min.css" rel="stylesheet">
     <link href="../Scripts/css/choix-categorie.css" rel="stylesheet">
 
-    <style>
-    ol
-{
-	list-style-type: none;
-}
-ol ol
-{
-	border-top: solid 1px #555;
-}
-ol li li
-{
-	background-color: #eeefe0;
-	color: #000;
-	border: solid 1px #555;
-	border-top: none;
-}
-.Day
-{
-	width: 100%;
-	padding: 5px 0px;
-	font-weight: bold;
-	color: #f16025;
-}
-.Time
-{
-	padding: 0 20px;
-	background-color: #97be3d;
-	border-right: solid 1px #555;
-	color: #fff;
-}</style>
-
-
     <!-- Support mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
 
-
+    <!-- AngularJS -->
     <script src="../Scripts/js/angular.min.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.26/angular-route.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.26/angular-route.min.js"></script>
 
-    <!--<script src="../Scripts/Controller/app.js"></script>-->
-    <!--<script src="../Scripts/Controller/controllers.js"></script>-->
+    <!-- App.js et le controller -->
+    <script src="../Scripts/Controller/app.js"></script>
+    <script src="../Scripts/Controller/controllers.js"></script>
 
-    <script src="../Scripts/Controller/app.js" type="text/javascript"></script>
-
-    <!--<script src='http://maps.googleapis.com/maps/api/js?sensor=false'></script>
+    <!-- Google Maps -->
+    <script src='http://maps.googleapis.com/maps/api/js?sensor=false'></script>
     <script src='../Scripts/js/lodash.js'></script>
-    <script src='../Scripts/js/angular-google-maps.js'></script>-->
+    <script src='../Scripts/js/angular-google-maps.js'></script>
 </head>
-<body ng-controller="MainController">
-        <!-- Your site -->
-        <header>
-            <div class="navbar navbar-default ">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <b><a href="javascript:void(0)"><img src="../Scripts/img/logo_variante.png" height="60" width="60" /></a></b>
-                </div>
-                <div class="navbar-collapse collapse navbar-responsive-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">Accueil</a></li>
-                        
-                        <li><a href="article.html">Un article</a></li>
-                        <li><a href="partager.html">Partager éditer d'article</a></li>
-                        <li><a href="testMap.html">Test de la Map</a></li>
-                        <li><a href="categorie.html">Catégorie</a></li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-
-    <div class="jumbotron col-md-6 col-md-offset-3">
-
-        <ol>
-            <li>
-                <span class="Day">Lundi</span>
-                <ol>
-                    <li ng-repeat="article in Articles">
-                        <span class="Time">{{article.Heure}}</span>
-                        <span>{{article.Titre}}</span>
-                    </li>
-                </ol>
-            </li>
-        </ol>
-
-
+<body>
+    
+    <div class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <b><a href="javascript:void(0)"><img src="../Scripts/img/logo_variante.png" height="60" width="60" /></a></b>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#/">Intro</a></li>
+                <li><a href="#/connection">Connexion</a></li>
+                <li><a href="#/article">Un article</a></li>
+                <li><a href="#/partager">Partage/édition d'article</a></li>
+                <li><a href="#/map">Test de la Map</a></li>
+                <li><a href="#/categorie">Catégorie</a></li>
+            </ul>
+        </div>
     </div>
 
-        <!-- Your site ends -->
-        
-        
-        <script src="../Scripts/js/jquery-1.10.2.min.js"></script>
-        <script src="../Scripts/js/bootstrap.min.js"></script>
-        <script src="../Scripts/js/ripples.min.js"></script>
-        <script src="../Scripts/js/material.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $.material.init();
-            });
-        </script>
-        <script type="text/javascript" src="../Scripts/js/animation.js"></script>
-        <script type="text/javascript" src="../Scripts/js/choix-categorie.js"></script>
-    </body>
+    <!-- Vue Angular -->
+    <div ng-view>
+    </div>
+
+    <script src="../Scripts/js/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/js/bootstrap.min.js"></script>
+    <script src="../Scripts/js/ripples.min.js"></script>
+    <script src="../Scripts/js/material.min.js"></script>
+    <script>
+$(document).ready(function() {
+$.material.init();
+});
+    </script>
+    <script type="text/javascript" src="../Scripts/js/animation.js"></script>
+    <script type="text/javascript" src="../Scripts/js/choix-categorie.js"></script>
+</body>
 </html>
