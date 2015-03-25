@@ -98,6 +98,7 @@
     <Content Include="Content\view\article.html" />
     <Content Include="Content\view\categorie.html" />
     <Content Include="Content\view\connection.html" />
+    <Content Include="Content\view\intro.html" />
     <Content Include="Content\view\index.html" />
     <Content Include="Content\view\map.html" />
     <Content Include="Content\view\partager.html" />
@@ -924,10 +925,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Article.cs" />
-    <Compile Include="Controllers\Center.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Map.cs" />
-    <Compile Include="Global.asax.cs">
+	<Compile Include="Controllers\Categorie.cs" />
+    <Compile Include="Controllers\CategorieController.cs" />
+	<Compile Include="Controllers\HomeController.cs" />
+	<Compile Include="Controllers\Map.cs" />
+	    <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -950,6 +952,8 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\js\material.min.js.map" />
     <Content Include="Scripts\js\ripples.min.js.map" />
+    <Content Include="Scripts\json\autreCategories.json" />
+    <Content Include="Scripts\json\categories.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

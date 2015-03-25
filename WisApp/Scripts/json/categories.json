@@ -1,0 +1,32 @@
+[
+ {
+  "name": "Politique",
+  "article1": "Parti de gauche",
+  "article2": "Parti de droite",
+  "article3": "Parti de centre"
+ },
+ {
+  "name": "Sport",
+  "article1": "Le football",
+  "article2": "Le basket-ball",
+  "article3": "Tennis"
+ },
+ {
+  "name": "Science",
+  "article1": "Corps humain",
+  "article2": "Les organes vitaux",
+  "article3": "La chirurgie"
+ },
+ {
+  "name": "Technologie",
+  "article1": "Lunettes 3D",
+  "article2": "Robot domestique",
+  "article3": "Fusée"
+ },
+ {
+  "name": "Art",
+  "article1": "Peinture",
+  "article2": "Cinéma",
+  "article3": "Musique"
+ }
+]

@@ -14,13 +14,13 @@ wisApp.config(['$routeProvider',
     $routeProvider.
 	  when('/', {
         templateUrl: 'view/index.html',
-        controller: 'introCtrl'
+        controller: 'indexCtrl'
       }).
       when('/connection', {
         templateUrl: 'view/connection.html',
         controller: 'connectionCtrl'
       }).
-	  when('/article', {
+	  when('/article/:idArticle', {
         templateUrl: 'view/article.html',
         controller: 'articleCtrl'
       }).

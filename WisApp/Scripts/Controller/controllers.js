@@ -1,17 +1,41 @@
 var wisControllers = angular.module('wisControllers', []);
 
+
+
+wisControllers.controller('indexCtrl',
+	function ($scope,$http) {
+
+
+	   $http.get("/api/Home/Articles")
+            .success(function (data) {
+                $scope.Message = "TRUE";
+                $scope.Articles = data;
+            });
+
+
+
+	});
+
+
 wisControllers.controller('partagerCtrl', ['$scope',
-	function ($scope){
-		var articlePartager = {
-			titre : 'CES 2015 : les drones vedettes à Las Vegas',
-			corps : 'Drones miniatures, drones pour simuler des combats aériens, pour suivre les sportifs ou spécialisés dans les autoportraits… Lédition 2015 du Consumer Electronics Show a illustré la montée en puissance de ce marché pour le grand public.',
+	function ($scope, $http){
+
+
+	    $http.get("/api/Home/getArticle/id")
+          .success(function (data) {
+              $scope.article = data;
+          });
+
+	    /** var articlePartager = {
+			titre : $scope,
+			corps : data.corps,'Drones miniatures, drones pour simuler des combats aériens, pour suivre les sportifs ou spécialisés dans les autoportraits… Lédition 2015 du Consumer Electronics Show a illustré la montée en puissance de ce marché pour le grand public.',
 			auteur : 'Relaxnews',
 			tags : 'drones, CES2015, smartphone',
 			date : '12/01/2015',
 			source : 'http://www.futura-sciences.com/magazines/high-tech/infos/actu'
 
-		};
-		$scope.article = articlePartager;
+		}; */
+		// $scope.article = articlePartager;
 	  }]);
 
 wisControllers.controller('articleCtrl', ['$scope',
@@ -29,26 +53,15 @@ wisControllers.controller('articleCtrl', ['$scope',
  }]);
 
 wisControllers.controller('categorieCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get('./json/categories.json').success(function(data) {
+    $http.get('/api/Categorie/Categorie').success(function (data) {
         $scope.categories = data;
     });
     
-    $http.get('./json/autreCategories.json').success(function(data) {
+    $http.get('/api/Categorie/OtherCategorie').success(function (data) {
         $scope.autres = data;
     });
     
-    $scope.showModal = false;
-    
-    $scope.orderProp = 'name';
-    
-    var categ = [
-        
-    ];
-    
-    $scope.selectCategorie = "";
-    $scope.choixCategorie = function(){		
-        $scope.categ.push({ categorie : $scope.selectCategorie});
-    };
+    $scope.orderProp = 'Titre';
 
 }]);
 
