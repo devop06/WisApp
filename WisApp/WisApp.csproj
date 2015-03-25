@@ -892,7 +892,7 @@
     <Content Include="Scripts\css\ripples.min.css.map" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\img\fb.png" />
-    <Content Include="Scripts\img\g+.png" />
+    <Content Include="Scripts\img\google.png" />
     <Content Include="Scripts\img\logo_nowhite.png" />
     <Content Include="Scripts\img\logo_old_mini.png" />
     <Content Include="Scripts\img\logo_variante.png" />
