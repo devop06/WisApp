@@ -1,0 +1,16 @@
+/* app css stylesheet */
+
+body {
+    padding-top: 20px;
+}
+
+.categories {
+    overflow:scroll;
+    width:700px; 
+    height:400px;
+}
+
+#ajout {
+    width:40px; 
+    height:40px;
+}
