@@ -1,0 +1,32 @@
+[
+ {
+  "name": "Cinéma",
+  "article1": "Comédie",
+  "article2": "Guerre",
+  "article3": "Drame"
+ },
+ {
+  "name": "Cuisine",
+  "article1": "Andives",
+  "article2": "Lasagnes",
+  "article3": "Big Mac"
+ },
+ {
+  "name": "Portable",
+  "article1": "Asus",
+  "article2": "HP",
+  "article3": "Mac"
+ },
+ {
+  "name": "Ville",
+  "article1": "Paris",
+  "article2": "Pau",
+  "article3": "Monaco"
+ },
+ {
+  "name": "Musique",
+  "article1": "Rap",
+  "article2": "Jazz",
+  "article3": "Reggae"
+ }
+]
