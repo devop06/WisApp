@@ -98,6 +98,7 @@
     <Content Include="Content\view\article.html" />
     <Content Include="Content\view\categorie.html" />
     <Content Include="Content\view\connection.html" />
+    <Content Include="Content\view\index.html" />
     <Content Include="Content\view\map.html" />
     <Content Include="Content\view\partager.html" />
     <Content Include="Global.asax" />
@@ -124,6 +125,7 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\Controller\app.js" />
     <Content Include="Scripts\css\bootstrap-theme.css" />
     <Content Include="Scripts\css\bootstrap-theme.min.css" />
     <Content Include="Scripts\css\bootstrap.css" />
