@@ -1,17 +1,54 @@
+
+
+<style>
+    ol {
+        list-style-type: none;
+    }
+
+        ol ol {
+            border-top: solid 1px #555;
+        }
+
+        ol li li {
+            background-color: #eeefe0;
+            color: #000;
+            border: solid 1px #555;
+            border-top: none;
+        }
+
+    .Day {
+        width: 100%;
+        padding: 5px 0px;
+        font-weight: bold;
+        color: #f16025;
+    }
+
+    .Time {
+        padding: 0 20px;
+        background-color: #97be3d;
+        border-right: solid 1px #555;
+        color: #fff;
+    }
+</style>
+
+
+
 <div class="jumbotron col-md-6 col-md-offset-3">
-			<video class="img-responsive" controls>
-				<source src="video/test.mp4" type"video/mp4"/>
-			</video>
-		</div>
 
-		<div class="col-md-6 col-md-offset-3">
-			<center>
-				<a href="#/connection" class="btn btn-primary">Passez >></a>
-			</center>
-		</div>
+    {{Message}}
 
-		<div class="disparition" style="position: fixed; bottom: 0px; background-color: white; width: 100%;">
-		  <div class="container">
-			<p class="text-muted">FOOTER QUI DISPARAIT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a></p>
-		  </div>
-		</div>
+
+
+    <ol>
+        <li>
+            <span class="Day">Lundi</span>
+            <ol>
+                <li ng-repeat="article in Articles">
+                    <span class="Time">{{article.Heure}}</span>
+                    <span>{{article.Titre}}</span>
+                </li>
+            </ol>
+        </li>
+    </ol>
+
+</div>

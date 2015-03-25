@@ -14,7 +14,7 @@ wisApp.config(['$routeProvider',
     $routeProvider.
 	  when('/', {
         templateUrl: 'view/index.html',
-        controller: 'introCtrl'
+        controller: 'indexCtrl'
       }).
       when('/connection', {
         templateUrl: 'view/connection.html',
