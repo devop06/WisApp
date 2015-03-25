@@ -16,16 +16,9 @@
                     <br><br>
                     <div class="categories">
                         <div ng-repeat="categorie in categories | filter:query | orderBy:orderProp">
-                            <!--<button ng-model="selectCategorie" class="col-md-4">{{categorie.name}}</button>-->
-                            <!--<button class="col-md-4" ng-click="click()">{{categorie.name}}</button>-->
-                            <div ng-submit="choixCategorie()">
-                                <input type="button" ng-model="selectCategorie" class="col-md-4" value="{{categorie.name}}">
-                            </div>
-                            <br><br>
+                            <input type="button" ng-model="selectCategorie" class="col-md-4" value="{{categorie.Titre}}">
                             <ul>
-                              <li>{{categorie.article1}}</li>
-                              <li>{{categorie.article2}}</li>
-                              <li>{{categorie.article3}}</li>
+                                <li>{{categorie.Articles}}</li>
                             </ul>
                             <br>
                         </div>

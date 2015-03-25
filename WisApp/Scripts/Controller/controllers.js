@@ -11,8 +11,8 @@ wisControllers.controller('indexCtrl',
                 $scope.Message = "TRUE";
                 $scope.Articles = data;
             });
-	    
-   
+
+
 
 	});
 
@@ -53,26 +53,15 @@ wisControllers.controller('articleCtrl', ['$scope',
  }]);
 
 wisControllers.controller('categorieCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get('./json/categories.json').success(function(data) {
+    $http.get('/api/Categorie/Categorie').success(function (data) {
         $scope.categories = data;
     });
     
-    $http.get('./json/autreCategories.json').success(function(data) {
+    $http.get('/api/Categorie/OtherCategorie').success(function (data) {
         $scope.autres = data;
     });
     
-    $scope.showModal = false;
-    
-    $scope.orderProp = 'name';
-    
-    var categ = [
-        
-    ];
-    
-    $scope.selectCategorie = "";
-    $scope.choixCategorie = function(){		
-        $scope.categ.push({ categorie : $scope.selectCategorie});
-    };
+    $scope.orderProp = 'Titre';
 
 }]);
 
