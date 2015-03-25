@@ -2,35 +2,40 @@ var wisControllers = angular.module('wisControllers', []);
 
 
 
-wisControllers.controller('indexCtrl', ['$scope',
-	function ($scope) {
+wisControllers.controller('indexCtrl',
+	function ($scope,$http) {
 
-	    $scope.Message = "Hello World";
 
-	    /*$http.get("/api/Home/Articles")
+	   $http.get("/api/Home/Articles")
             .success(function (data) {
+                $scope.Message = "TRUE";
                 $scope.Articles = data;
             });
-	    /*.error(function(Data));*/
+	    
+   
 
-	}]);
+	});
 
 
 wisControllers.controller('partagerCtrl', ['$scope',
-	function ($scope){
+	function ($scope, $http){
 
 
+	    $http.get("/api/Home/getArticle/id")
+          .success(function (data) {
+              $scope.article = data;
+          });
 
-	    var articlePartager = {
-			titre : 'CES 2015 : les drones vedettes à Las Vegas',
-			corps : 'Drones miniatures, drones pour simuler des combats aériens, pour suivre les sportifs ou spécialisés dans les autoportraits… Lédition 2015 du Consumer Electronics Show a illustré la montée en puissance de ce marché pour le grand public.',
+	    /** var articlePartager = {
+			titre : $scope,
+			corps : data.corps,'Drones miniatures, drones pour simuler des combats aériens, pour suivre les sportifs ou spécialisés dans les autoportraits… Lédition 2015 du Consumer Electronics Show a illustré la montée en puissance de ce marché pour le grand public.',
 			auteur : 'Relaxnews',
 			tags : 'drones, CES2015, smartphone',
 			date : '12/01/2015',
 			source : 'http://www.futura-sciences.com/magazines/high-tech/infos/actu'
 
-		};
-		$scope.article = articlePartager;
+		}; */
+		// $scope.article = articlePartager;
 	  }]);
 
 wisControllers.controller('articleCtrl', ['$scope',

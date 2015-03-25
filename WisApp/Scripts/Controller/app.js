@@ -20,7 +20,7 @@ wisApp.config(['$routeProvider',
         templateUrl: 'view/connection.html',
         controller: 'connectionCtrl'
       }).
-	  when('/article', {
+	  when('/article/:idArticle', {
         templateUrl: 'view/article.html',
         controller: 'articleCtrl'
       }).
