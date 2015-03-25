@@ -28,7 +28,7 @@ namespace ExCategorie.Controllers
             unArticle.Titre = "Parti de centre";
             article.Add(unArticle);
             uneCategorie.Name = "Politique";
-            uneCategorie.Article = article;
+            uneCategorie.Articles = article;
             resultat.Add(uneCategorie);
 
             unArticle = new Article();
@@ -42,7 +42,7 @@ namespace ExCategorie.Controllers
             article.Add(unArticle);
             uneCategorie = new Categorie();
             uneCategorie.Name = "Sport";
-            uneCategorie.Article = article;
+            uneCategorie.Articles = article;
             resultat.Add(uneCategorie);
 
             unArticle = new Article();
@@ -56,7 +56,7 @@ namespace ExCategorie.Controllers
             article.Add(unArticle);
             uneCategorie = new Categorie();
             uneCategorie.Name = "Science";
-            uneCategorie.Article = article;
+            uneCategorie.Articles = article;
             resultat.Add(uneCategorie);
 
             unArticle = new Article();
@@ -70,7 +70,7 @@ namespace ExCategorie.Controllers
             article.Add(unArticle);
             uneCategorie = new Categorie();
             uneCategorie.Name = "Technologie";
-            uneCategorie.Article = article;
+            uneCategorie.Articles = article;
             resultat.Add(uneCategorie);
 
             unArticle = new Article();
@@ -84,13 +84,14 @@ namespace ExCategorie.Controllers
             article.Add(unArticle);
             uneCategorie = new Categorie();
             uneCategorie.Name = "Art";
-            uneCategorie.Article = article;
+            uneCategorie.Articles = article;
             resultat.Add(uneCategorie);
 
             return resultat;
 
         }
 
+        [HttpGet]
         public List<OtherCategorie> OtherCategorie()
         {
             List<OtherCategorie> resultat = new List<OtherCategorie>();
@@ -110,7 +111,7 @@ namespace ExCategorie.Controllers
             article.Add(unArticle);
             uneCategorie = new OtherCategorie();
             uneCategorie.Name = "Géographie";
-            uneCategorie.Article = article;
+            uneCategorie.Articles = article;
             resultat.Add(uneCategorie);
 
             unArticle = new Article();
@@ -124,7 +125,7 @@ namespace ExCategorie.Controllers
             article.Add(unArticle);
             uneCategorie = new OtherCategorie();
             uneCategorie.Name = "Histoire";
-            uneCategorie.Article = article;
+            uneCategorie.Articles = article;
             resultat.Add(uneCategorie);
 
             unArticle = new Article();
@@ -138,7 +139,7 @@ namespace ExCategorie.Controllers
             article.Add(unArticle);
             uneCategorie = new OtherCategorie();
             uneCategorie.Name = "Cuisine";
-            uneCategorie.Article = article;
+            uneCategorie.Articles = article;
             resultat.Add(uneCategorie);
 
             unArticle = new Article();
@@ -152,7 +153,7 @@ namespace ExCategorie.Controllers
             article.Add(unArticle);
             uneCategorie = new OtherCategorie();
             uneCategorie.Name = "Littérature";
-            uneCategorie.Article = article;
+            uneCategorie.Articles = article;
             resultat.Add(uneCategorie);
 
             unArticle = new Article();
@@ -166,7 +167,7 @@ namespace ExCategorie.Controllers
             article.Add(unArticle);
             uneCategorie = new OtherCategorie();
             uneCategorie.Name = "Cinéma";
-            uneCategorie.Article = article;
+            uneCategorie.Articles = article;
             resultat.Add(uneCategorie);
 
             unArticle = new Article();
@@ -180,7 +181,7 @@ namespace ExCategorie.Controllers
             article.Add(unArticle);
             uneCategorie = new OtherCategorie();
             uneCategorie.Name = "Musique";
-            uneCategorie.Article = article;
+            uneCategorie.Articles = article;
             resultat.Add(uneCategorie);
 
             return resultat;
