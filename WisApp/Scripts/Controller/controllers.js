@@ -53,16 +53,35 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function($scope, 
 }]);
 
 wisControllers.controller('mapCtrl', ['$scope',
-    function ($scope, uiGmapGoogleMapApi){
-        if(navigator.geolocation){
+    function ($scope, uiGmapGoogleMapApi) {
+        if (navigator.geolocation) {
 
             navigator.geolocation.getCurrentPosition(function (position) {
 
                 $scope.map = { center: { latitude: position.coords.latitude, longitude: position.coords.longitude }, zoom: 18 };
                 $scope.$apply();
-            }, function () {});
-        }else{
-            $scope.map = { center: {latitude: 46.6698231, longitude: 2.9012201}, zoom: 6};
+            }, function () { });
+        } else {
+            $scope.map = { center: { latitude: 46.6698231, longitude: 2.9012201 }, zoom: 6 };
             $scope.$apply();
         }
     }]);
+
+wisControllers.controller('creerCtrl', ['$scope',
+   function($scope) {
+       $scope.titreArticle = "Quel titre pour votre article ?";
+       $scope.contentArticle = "Ici tapez votre article";
+       $scope.tagsArticle = "Ex : Tag1, Tag2, Tag3";
+
+       $scope.submit = function () {
+           if ($scope.titreArticle) {
+              
+               $scope.titreArticle = "";
+               $scope.contentArticle = "";
+               $scope.tagsArticle = "";
+               
+           }
+           
+       }
+   }
+]);

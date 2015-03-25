@@ -31,11 +31,15 @@ wisApp.config(['$routeProvider',
 	  when('/map', {
         templateUrl: 'view/map.html',
         controller: 'mapCtrl'
-      }).
+	  }).
 	  when('/categorie', {
-        templateUrl: 'view/categorie.html',
-        controller: 'categorieCtrl'
-      }).
+	      templateUrl: 'view/categorie.html',
+	      controller: 'categorieCtrl'
+	  }).
+	  when('/creer', {
+	      templateUrl: 'view/creer.html',
+	      controller: 'creerCtrl'
+	  }).
 	  /*when('/article', {
         templateUrl: 'view/article.html',
         controller: 'articleCtrl'
