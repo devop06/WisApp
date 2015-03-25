@@ -52,6 +52,7 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function($scope, 
 
 }]);
 
+/*
 wisControllers.controller('mapCtrl', ['$scope',
     function ($scope, uiGmapGoogleMapApi){
         if(navigator.geolocation){
@@ -66,3 +67,25 @@ wisControllers.controller('mapCtrl', ['$scope',
             $scope.$apply();
         }
     }]);
+    */
+
+wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http) {
+    if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition(function (position) {
+
+            $scope.map = { center: { latitude: position.coords.latitude, longitude: position.coords.longitude }, zoom: 18 };
+            $scope.$apply();
+        }, function () { });
+    } else {
+        $http.get("/api/Home/initMap")
+        .success(function (data) {
+            $scope.map = data;
+            $scope.$apply();
+        })
+        .error(function (data) {
+
+        });
+    }
+   
+});

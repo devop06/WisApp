@@ -28,5 +28,18 @@ namespace WisApp.Controllers
         }
 
 
+        [HttpGet]
+        public Map initMap()
+        {
+
+            var map = new Map();
+            var center = new Center();
+            center.latitude=46.6698231;
+            center.longitude = 2.9012201;
+            map.center=center;
+            map.zoom=6;
+            return map;
+        }
+
     }
 }
