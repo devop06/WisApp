@@ -1,8 +1,27 @@
 var wisControllers = angular.module('wisControllers', []);
 
+
+
+wisControllers.controller('indexCtrl', ['$scope',
+	function ($scope) {
+
+	    $scope.Message = "Hello World";
+
+	    /*$http.get("/api/Home/Articles")
+            .success(function (data) {
+                $scope.Articles = data;
+            });
+	    /*.error(function(Data));*/
+
+	}]);
+
+
 wisControllers.controller('partagerCtrl', ['$scope',
 	function ($scope){
-		var articlePartager = {
+
+
+
+	    var articlePartager = {
 			titre : 'CES 2015 : les drones vedettes à Las Vegas',
 			corps : 'Drones miniatures, drones pour simuler des combats aériens, pour suivre les sportifs ou spécialisés dans les autoportraits… Lédition 2015 du Consumer Electronics Show a illustré la montée en puissance de ce marché pour le grand public.',
 			auteur : 'Relaxnews',
