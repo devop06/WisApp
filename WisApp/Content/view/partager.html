@@ -1,0 +1,65 @@
+<div class="jumbotron col-md-6 col-md-offset-3">
+    
+	<h1>Partager l'information :</h1>
+    <h3>{{ article.titre }}</h3>
+    <p><em>Publié le :</em> {{ article.date }}
+    <br>
+    <em>Source : </em>{{ article.source }} -> par {{ article.auteur }}</p>
+    
+    
+
+
+
+
+
+<form class="form-horizontal">
+    <fieldset>
+        <legend>Créer un article</legend>
+        <div class="form-group">
+            <label for="inputTitre" class="col-lg-2 control-label">Titre</label>
+            <div class="col-lg-10">
+                <input class="form-control" id="inputTitre" value="{{ article.titre }}" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputContenu" class="col-lg-2 control-label">Contenu</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="4" id="inputContenu">{{ article.corps }}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputTags" class="col-lg-2 control-label">Tags</label>
+            <div class="col-lg-10">
+                <input class="form-control" id="inputTags" value="{{ article.tags }}" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Visibilité</label>
+            <div class="col-lg-10">
+                <div class="radio radio-primary">
+                    <label>
+                        <input name="optionsRadios" id="optionsRadios1" value="option1" checked="" type="radio">
+                        Public
+                    </label>
+                </div>
+                <div class="radio radio-primary">
+                    <label>
+                        <input name="optionsRadios" id="optionsRadios2" value="option2" type="radio">
+                        Privée
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button class="btn btn-default">Joindre un Média</button>
+                <button type="submit" class="btn btn-primary">Partager</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+
+
+
+</div>

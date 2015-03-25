@@ -1,0 +1,82 @@
+        <div class="jumbotron col-md-6 col-md-offset-3">
+            <h3 class="modal-title">Choix des catégorie</h3>
+            <br>
+            <div class="container-fluid">
+                <div class="row">
+                    Rechercher : <input ng-model="query">
+                    <br><br>
+                    Trier par :
+                    <select ng-model="orderProp">
+                      <option value="name">Catégorie</option>
+                    </select>
+                    <br><br>
+                    <div ng-repeat="c in categ">
+                        {{c.categorie}}
+                    </div>
+                    <br><br>
+                    <div class="categories">
+                        <div ng-repeat="categorie in categories | filter:query | orderBy:orderProp">
+                            <!--<button ng-model="selectCategorie" class="col-md-4">{{categorie.name}}</button>-->
+                            <!--<button class="col-md-4" ng-click="click()">{{categorie.name}}</button>-->
+                            <div ng-submit="choixCategorie()">
+                                <input type="button" ng-model="selectCategorie" class="col-md-4" value="{{categorie.name}}">
+                            </div>
+                            <br><br>
+                            <ul>
+                              <li>{{categorie.article1}}</li>
+                              <li>{{categorie.article2}}</li>
+                              <li>{{categorie.article3}}</li>
+                            </ul>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <!--<button ng-click="toggleModal()" class="btn btn-primary">+</button>-->
+                <!--<button id="ajout" class="btn btn-primary"  data-toggle="modal" data-target="#news_categ">+</button>-->
+                <button open-dialog id="ajout" class="btn btn-primary">+</button>
+                <!--<modal-dialog></modal-dialog>-->
+            </div>
+        </div>
+        
+        <div class="modal hide fade" id="myModal" ng-controller="ModalCtrl">
+            <div class="modal-header">
+                <h2>Ajouter des catégories</h2>
+                <button data-dismiss="modal">Close</button>
+            </div>
+            <div class="modal-body">
+                <div ng-repeat="autre in autres">
+                    <input ng-checked="cocher()" type="checkbox" name="autre" >{{autre.name}}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="valider()">OK</button>
+            </div>
+        </div>
+<!--        <div id="news_categ" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 class="modal-title">Choix de nouvelles catégories</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="togglebutton">
+                            <div class="checkbox">
+                                <div ng-repeat="autre in autres | filter:query | orderBy:orderProp">
+                                    <label class="col-md-4"><input type="checkbox" />{{autre.name}}</label>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <div class="sample3">
+                                <button class="btn btn-primary btn-flat btn-raised"><i class="mdi-navigation-check"></i>Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>-->

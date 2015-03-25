@@ -93,8 +93,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Base.html" />
     <Content Include="Content\index.html" />
-    <Content Include="Content\indexOld.html" />
+    <Content Include="Content\indexAngular.html" />
+    <Content Include="Content\view\article.html" />
+    <Content Include="Content\view\categorie.html" />
+    <Content Include="Content\view\connection.html" />
+    <Content Include="Content\view\index.html" />
+    <Content Include="Content\view\map.html" />
+    <Content Include="Content\view\partager.html" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -898,10 +905,12 @@
     <Content Include="Scripts\js\angular.js" />
     <Content Include="Scripts\js\angular.min.js" />
     <Content Include="Scripts\js\animation.js" />
+    <Content Include="Scripts\js\app.js" />
     <Content Include="Scripts\js\bigSlide.js" />
     <Content Include="Scripts\js\bootstrap.js" />
     <Content Include="Scripts\js\bootstrap.min.js" />
     <Content Include="Scripts\js\choix-categorie.js" />
+    <Content Include="Scripts\js\controllers.js" />
     <Content Include="Scripts\js\jquery-1.10.2.min.js" />
     <Content Include="Scripts\js\lodash.js" />
     <Content Include="Scripts\js\map.js" />

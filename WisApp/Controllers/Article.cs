@@ -11,6 +11,8 @@ namespace WisApp.Controllers
         {
 
         }
+
+        public int id { get; set; }
         public string Titre { get; set; }
         public string Date { get; set; }
         public string Heure { get; set; }
