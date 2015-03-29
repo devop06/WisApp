@@ -11,9 +11,6 @@ wisControllers.controller('indexCtrl',
                 $scope.Message = "TRUE";
                 $scope.Articles = data;
             });
-
-
-
 	});
 
 

@@ -28,7 +28,7 @@ namespace WisApp.Controllers
         
         public Article getArticle(int id)
         {
-            foreach (Article a in this.resultat)
+            /*foreach (Article a in this.Articles())
             {
                 if (a.id == id)
                 {
@@ -36,9 +36,11 @@ namespace WisApp.Controllers
                 }
                 else
                     return null;
-            }
+            }*/
 
-            return null;
+            Article a = Articles().Find(x => x.id == id);
+
+            return a;
         }
 
 
