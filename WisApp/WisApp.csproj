@@ -129,6 +129,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\Controller\app.js" />
+    <Content Include="Scripts\css\appCategorie.css" />
     <Content Include="Scripts\css\bootstrap-theme.css" />
     <Content Include="Scripts\css\bootstrap-theme.min.css" />
     <Content Include="Scripts\css\bootstrap.css" />

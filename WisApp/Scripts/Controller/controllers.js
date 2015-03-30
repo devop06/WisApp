@@ -39,14 +39,21 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', fun
 wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope, $http) {
     $http.get('/api/Categorie/Categorie').success(function (data) {
         $scope.categories = data;
+        $scope.orderProp = categories.Name;
     });
 
     $http.get('/api/Categorie/OtherCategorie').success(function (data) {
         $scope.autres = data;
     });
 
-    $scope.orderProp = 'Titre';
+    $scope.class = "grey";
 
+    $scope.changeClass = function () {
+        if ($scope.class === "grey")
+            $scope.class = "green";
+        else
+            $scope.class = "grey";
+    };
 }]);
 
 
