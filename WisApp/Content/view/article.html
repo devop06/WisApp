@@ -16,10 +16,10 @@
              <br/>
         </div>
            
-           <img  src="http://s2.lemde.fr/image/2015/01/12/534x0/4554389_6_b426_l-enquete-sur-les-assassinats-de-charlie_c05627086638688085e5708b8b09ec3c.jpg" alt="image info"/>
+           <img  src="{{article.Image}}" alt="image info"/>
    <div style="margin-left: 5%;margin-right: 5%; text-indent: 5%;">
               
-       <p><br/>{{ article.Description }}</p>
+       <p><br/>{{ article.Content }}</p>
 
     </div>
            
@@ -27,7 +27,7 @@
         <div  id="foot_article" class="row">
            
             <div class="center-block">
-                <div class="btn btn-default"> <a href="javascript:void(0)" class="pull-left">Editer</a></div>
+                <div class="btn btn-default"> <a href="#/partager/{{article.id}}" class="pull-left">Editer</a></div>
                 
                
                 <div class="btn btn-default"> <a href="javascript:void(0)" class="pull-right">Marquer comme non lu</a></div>

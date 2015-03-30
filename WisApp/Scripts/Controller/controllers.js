@@ -12,13 +12,15 @@ wisControllers.controller('indexCtrl',
 	});
 
 
-wisControllers.controller('partagerCtrl', ['$scope',
-	function ($scope, $http) {
+wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
 
+    var id = $routeParams.id;
+    var routeApi = "/api/Home/getArticle/" + id;
 
-	    $http.get("/api/Home/getArticle/id")
+    $http.get(routeApi)
           .success(function (data) {
               $scope.article = data;
+
           });
 	}]);
 

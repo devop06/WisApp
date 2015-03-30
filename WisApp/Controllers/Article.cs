@@ -16,6 +16,7 @@ namespace WisApp.Controllers
         public string Titre { get; set; }
         public string Date { get; set; }
         public string Heure { get; set; }
+        public string Image { get; set; }
         public string Content { get; set; }
         public string Description { get; set; }
         public string Auteur { get; set; }

@@ -19,7 +19,7 @@ wisApp.config(['$routeProvider',
         templateUrl: 'view/article.html',
         controller: 'articleCtrl'
       }).
-	  when('/partager', {
+	  when('/partager/:id', {
         templateUrl: 'view/partager.html',
         controller: 'partagerCtrl'
       }).
