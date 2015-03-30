@@ -5,34 +5,24 @@
                 <div class="row">
                     Rechercher : <input ng-model="query">
                     <br><br>
-                    Trier par :
-                    <select ng-model="orderProp">
-                      <option value="name">Catégorie</option>
-                    </select>
-                    <br><br>
-                    <div ng-repeat="c in categ">
-                        {{c.categorie}}
-                    </div>
-                    <br><br>
                     <div class="categories">
-                        <div ng-repeat="categorie in categories | filter:query | orderBy:orderProp">
-                            <input type="button" ng-model="selectCategorie" class="col-md-4" value="{{categorie.Titre}}">
-                            <ul>
-                                <li>{{categorie.Articles}}</li>
-                            </ul>
-                            <br>
+                        <div ng-repeat="categorie in categories | filter:query">
+                            <input type="button" ng-model="selectCategorie" class="col-md-4 btn btn-primary" value="{{categorie.Name}}" />
+                            <br /><br /><br />
+                            <div ng-repeat="article in categorie.Articles">
+                                <ul><li>{{article.Titre}}</li></ul>
+                            </div>
                         </div>
+                        <br />
                     </div>
                 </div>
                 <br>
-                <!--<button ng-click="toggleModal()" class="btn btn-primary">+</button>-->
                 <!--<button id="ajout" class="btn btn-primary"  data-toggle="modal" data-target="#news_categ">+</button>-->
                 <button open-dialog id="ajout" class="btn btn-primary">+</button>
-                <!--<modal-dialog></modal-dialog>-->
             </div>
         </div>
         
-        <div class="modal hide fade" id="myModal" ng-controller="ModalCtrl">
+        <!--<div class="modal hide fade" id="myModal" ng-controller="ModalCtrl">
             <div class="modal-header">
                 <h2>Ajouter des catégories</h2>
                 <button data-dismiss="modal">Close</button>
@@ -45,7 +35,7 @@
             <div class="modal-footer">
                 <button class="btn btn-primary" ng-click="valider()">OK</button>
             </div>
-        </div>
+        </div>-->
 <!--        <div id="news_categ" class="modal fade" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
