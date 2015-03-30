@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WisApp.Models
 {
-    public static class ModelConnection
+    public class ModelConnection
     {
         public static User user1 = new User("mohammed", "zouggari");
         public static User user2 = new User("julien", "bergaut");
