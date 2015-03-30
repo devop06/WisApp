@@ -1,7 +1,5 @@
 var wisControllers = angular.module('wisControllers', []);
 
-
-
 wisControllers.controller('indexCtrl',
 	function ($scope, $http) {
 
@@ -22,17 +20,6 @@ wisControllers.controller('partagerCtrl', ['$scope',
           .success(function (data) {
               $scope.article = data;
           });
-
-	    /** var articlePartager = {
-			titre : $scope,
-			corps : data.corps,'Drones miniatures, drones pour simuler des combats aériens, pour suivre les sportifs ou spécialisés dans les autoportraits… Lédition 2015 du Consumer Electronics Show a illustré la montée en puissance de ce marché pour le grand public.',
-			auteur : 'Relaxnews',
-			tags : 'drones, CES2015, smartphone',
-			date : '12/01/2015',
-			source : 'http://www.futura-sciences.com/magazines/high-tech/infos/actu'
-
-		}; */
-	    // $scope.article = articlePartager;
 	}]);
 
 wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
@@ -60,22 +47,6 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope,
 
 }]);
 
-/*
-wisControllers.controller('mapCtrl', ['$scope',
-    function ($scope, uiGmapGoogleMapApi){
-        if(navigator.geolocation){
-
-            navigator.geolocation.getCurrentPosition(function (position) {
-
-                $scope.map = { center: { latitude: position.coords.latitude, longitude: position.coords.longitude }, zoom: 18 };
-                $scope.$apply();
-            }, function () {});
-        }else{
-            $scope.map = { center: {latitude: 46.6698231, longitude: 2.9012201}, zoom: 6};
-            $scope.$apply();
-        }
-    }]);
-    */
 
 wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http) {
     if (navigator.geolocation) {
@@ -95,5 +66,4 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
 
         });
     }
-
 });

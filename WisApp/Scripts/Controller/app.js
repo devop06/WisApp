@@ -1,8 +1,3 @@
-/*var app = angular.module('Wis', []);
-app.controller('WisController', WisController);*/
-
-
-
 var wisApp = angular.module('wisApp', [
   'ngRoute',
   'wisControllers', 
@@ -40,12 +35,7 @@ wisApp.config(['$routeProvider',
 	      templateUrl: 'view/creer.html',
 	      controller: 'creerCtrl'
 	  }).
-	  /*when('/article', {
-        templateUrl: 'view/article.html',
-        controller: 'articleCtrl'
-      }).*/
-	  
-	  
+	    
 	  
       otherwise({
         redirectTo: '/'
