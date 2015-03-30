@@ -99,9 +99,9 @@
     <Content Include="Content\view\article.html" />
     <Content Include="Content\view\categorie.html" />
     <Content Include="Content\view\connection.html" />
-	<Content Include="Content\view\creer.html" />
-	<Content Include="Content\view\intro.html" />
-	<Content Include="Content\view\index.html" />
+    <Content Include="Content\view\creer.html" />
+    <Content Include="Content\view\intro.html" />
+    <Content Include="Content\view\index.html" />
     <Content Include="Content\view\map.html" />
     <Content Include="Content\view\partager.html" />
     <Content Include="Global.asax" />
@@ -937,6 +937,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelConnection.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -967,7 +969,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>

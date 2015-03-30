@@ -112,5 +112,24 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
            
         }, function () { });
 
-    } 
+    }
 });
+
+wisControllers.controller('creerCtrl', ['$scope',
+    function($scope) {
+        $scope.titreArticle = "Quel titre pour votre article ?";
+        $scope.contentArticle = "Ici tapez votre article";
+        $scope.tagsArticle = "Ex : Tag1, Tag2, Tag3";
+
+        $scope.submit = function () {
+        if ($scope.titreArticle) {
+         
+         $scope.titreArticle = "";
+         $scope.contentArticle = "";
+         $scope.tagsArticle = "";
+         
+          }
+        
+         }
+     }
+]);
