@@ -143,7 +143,7 @@ wisControllers.controller('creerCtrl', ['$scope',
 
 wisControllers.controller('connectionCtrl', function ($scope, $http) {
     $scope.checkUser = function () {
-        console.log($scope.user);
+        //console.log($scope.user);
         $http.post("/api/Connection/checkUser", $scope.user)
             .success(function (data) {
                 if (data == true) {

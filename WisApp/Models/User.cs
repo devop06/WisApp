@@ -15,5 +15,13 @@ namespace WisApp.Models
             this.login = login;
             this.password = password;
         }
+
+        public bool Equals(User user)
+        {
+            if (this.login == user.login && this.password == user.password)
+                return true;
+            else
+                return false;
+        }
     }
 }

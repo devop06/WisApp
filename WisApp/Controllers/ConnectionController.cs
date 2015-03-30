@@ -11,15 +11,15 @@ namespace WisApp.Controllers
         [HttpPost]
 
         public bool checkUser(User user){
-            /*if (ModelConnection.users.Contains(user))
+            if (user.Equals(ModelConnection.user1) || user.Equals(ModelConnection.user2))
             {
                 return true;
-            }*/
-            
+            }
+            /*
             if(user.login == "julien@wis" && user.password == "bergaut"){
                 return true;
             }
-
+            */
             else
                 return false;
         }
