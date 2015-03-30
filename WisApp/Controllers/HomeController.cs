@@ -8,13 +8,13 @@ using System.Web.Http;
 namespace WisApp.Controllers
 {
     public class HomeController : ApiController
-    {   
-        private List<Article> resultat = null;
+    {
+        private List<Article> resultat;
         [HttpGet]
         public List<Article> Articles()
         {
 
-            resultat = new List<Article>();
+            this.resultat = new List<Article>();
             resultat.Add(new Article() { id = 1, Titre = "Jean-Luc Lahaye jugé pour corruption de mineure de moins de 15 ans", Heure = "14:29", Description = "Description gros", Content = "Ce lundi, le chanteur de variétés de 62 ans comparaît devant le tribunal correctionnel de Paris. Il est accusé d'avoir demandé à une jeune fille de s'adonner à des jeux sexuels par webcam interposée. L'ancienne gloire des années 1980 face à la justice. Ce lundi, Jean-Luc Lahaye sera jugé par le tribunal correctionnel de Paris pour corruption sur mineure de moins de 15 ans. Le chanteur de 62 ans est poursuivi pour «proposition sexuelle à une mineure de moins de 15 ans en utilisant un moyen de communication électronique» et «détention d'image pornographique représentant des mineurs». Selon un source proche du dossier, l'artiste aurait demandé à une jeune fille de s'adonner à des jeux sexuels par webcam interposée.", Auteur = "moi-même", Image = "http://i.f1g.fr/media/ext/805x453_crop/www.lefigaro.fr/medias/2015/03/23/PHO0958d824-d0a9-11e4-a8ee-2fd35b8a82ce-805x453.jpg" });
             resultat.Add(new Article() { id = 2, Titre = "Le PS certain de conserver «une vingtaine» de départements", Heure = "14:24", Description = "Description", Content = "Au lendemain du premier tour des élections départementales 2015, les personnalités politiques ont réagi lundi aux bons scores de la droite. Compte tenu du nombre de triangulaires, environ 300, les questions du maintien et du front républicain au second tour ont ressurgi.", Auteur = "un autre", Image = "http://s3.lprs1.fr/images/2015/03/23/4630387_valloutg_545x460_autocrop.jpg" });
             resultat.Add(new Article() { id = 3, Date = "20/03/2015", Titre = "Les Bleus sont arrivés à Clairefontaine", Heure = "14:23", Description = "Les bleus sont arrivés sans se presser...", Content = "Les bleus sont arrivés sans se presser...", Auteur = "un autre", Image = "http://i1.eurosport.com/2015/03/29/1446228-30921410-1600-900.jpg" });
@@ -34,6 +34,10 @@ namespace WisApp.Controllers
             return a;
         }
 
+        public int getNombreArticle()
+        {
+            return Articles().Count();
+        }
 
     }
 }
