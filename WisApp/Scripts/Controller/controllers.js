@@ -69,3 +69,22 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
         });
     }
 });
+
+wisControllers.controller('connectionCtrl', function($scope, $http){
+    $scope.checkUser = function () {
+        console.log($scope.user);
+        $http.post("/api/Connection/checkUser", $scope.user)
+            .success(function (data) {
+                if (data == true) {
+                    alert('Authentification réussie');
+                }
+                else {
+                    alert('Identifiants invalides');
+                }
+                
+            })
+            .error(function(){
+                alert('Authentification impossible');
+            });
+    }
+});

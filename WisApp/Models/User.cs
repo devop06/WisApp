@@ -7,12 +7,12 @@ namespace WisApp.Models
 {
     public class User
     {
-        public string user { get; set; }
+        public string login { get; set; }
         public string password { get; set; }
 
-        public User(string user, string password)
+        public User(string login, string password)
         {
-            this.user = user;
+            this.login = login;
             this.password = password;
         }
     }

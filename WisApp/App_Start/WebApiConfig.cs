@@ -20,11 +20,11 @@ namespace WisApp
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.Routes.MapHttpRoute(
+            /*config.Routes.MapHttpRoute(
                 name: "ArticleApi",
                 routeTemplate: "api/Home/getArticles/{id}",
                 defaults: new { id = RouteParameter.Optional }
-            );
+            );*/
 
 
         }
