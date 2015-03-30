@@ -9,7 +9,9 @@ namespace WisApp.Controllers
     {
         public Map() {}
 
+      
         public Center center { get; set; }
         public int zoom { get; set; }
+
     }
 }

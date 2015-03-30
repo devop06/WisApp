@@ -1,7 +1,12 @@
 
 		<div class="jumbotron col-md-6 col-md-offset-3">
 
-		   <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
-		    
+		  <!--  <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>-->
+            <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
+                <ui-gmap-markers  models="randomMarkers" coords="'self'" icon="'icon'">
+                </ui-gmap-markers>
+            </ui-gmap-google-map>
 		</div>
+
+<!-- -->
 
