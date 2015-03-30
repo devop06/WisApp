@@ -35,21 +35,16 @@
 
 <div class="jumbotron col-md-6 col-md-offset-3">
 
-    {{Message}}
-
-
-
     <ol>
         <li>
             <span class="Day">Lundi</span>
             <ol>
                 <li ng-repeat="article in Articles">
                     <span class="Time">{{article.Heure}}</span>
-                    <span>{{article.Titre}}</span>
-                    <a href="#/article/{{article.id}}">Un article</a>
+                    <span><a href="#/article/{{article.id}}">{{article.Titre}}</a></span>
+                    
                 </li>
             </ol>
         </li>
     </ol>
-
 </div>

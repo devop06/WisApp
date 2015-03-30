@@ -1,14 +1,15 @@
 <div class="row" id="article">        
-                  
+      {{Message}}            
             
         <div  class="jumbotron col-md-6 col-md-offset-3"  >
        
-            <h2> {{ article.titre }}</h2>
+            <h2> {{ article.Titre }}</h2>
          <br/>
         <div  style="margin-left: 5%;">  
-             <p class="col-xs-9">Date : ../../.. 
-                 <br/>Source : {{ article.source }}
-                 <br/>  Tag : tech, sport, eco, droit...
+             <p class="col-xs-9">Date : {{ article.Date }}
+                 <br/>Source : {{ article.Source }}
+                 <br />Auteur : {{ article.Auteur }}
+                 <br/>  Tag : {{ article.Tags }}
                  
              </p>
             <a href="javascript:void(0)" class="btn btn-primary btn-fab btn-raised mdi-action-favorite-outline col-xs-9"></a>
@@ -18,7 +19,7 @@
            <img  src="http://s2.lemde.fr/image/2015/01/12/534x0/4554389_6_b426_l-enquete-sur-les-assassinats-de-charlie_c05627086638688085e5708b8b09ec3c.jpg" alt="image info"/>
    <div style="margin-left: 5%;margin-right: 5%; text-indent: 5%;">
               
-       <p><br/>{{ article.corps }}</p>
+       <p><br/>{{ article.Description }}</p>
 
     </div>
            
