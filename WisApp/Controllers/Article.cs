@@ -24,6 +24,7 @@ namespace WisApp.Controllers
         public string Source { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+        public string Visibilite { get; set; }
     }
 
     

@@ -1,5 +1,5 @@
-﻿<div class="jumbotron col-md-6 col-md-offset-3">
-    <form  ng-submit="submit()" ng-controller="creerCtrl" class="form-horizontal">
+﻿<div ng-controller="creerCtrl" class="jumbotron col-md-6 col-md-offset-3">
+    <form class="form-horizontal">
         <fieldset>
             <legend>Créer un article</legend>
             <div class="form-group">
@@ -24,14 +24,14 @@
                 <label class="col-lg-2 control-label">Visibilité</label>
                 <div class="col-lg-10">
                     <div class="radio radio-primary">
-                        <label for="optionRadios1" class="col-lg-10">
-                            <input name="optionsRadios" id="optionsRadios1" value="option1" type="radio">
+                        <label>
+                            <input name="optionsRadios" id="optionsRadios1" value="public" type="radio">
                             Public
                         </label>
                     </div>
                     <div class="radio radio-primary">
-                        <label for="optionRadios2" class="col-lg-10">
-                            <input name="optionsRadios" id="optionsRadios2" value="option2" type="radio">
+                        <label>
+                            <input name="optionsRadios" id="optionsRadios2" value="privée" type="radio" checked="">
                             Privée
                         </label>
                     </div>
@@ -40,11 +40,12 @@
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
                     <button class="btn btn-default">Joindre un Média</button>
-                    <input type="submit" id="submit" value="Partager" class="btn btn-primary">
+                    <button ng-click="submit()" class="btn btn-primary">Partager</button>
                 </div>
             </div>
         </fieldset>
     </form>
 
     <pre>Article : {{article}}</pre>
+    <pre>Message : {{message}}</pre>
 </div>

@@ -100,6 +100,7 @@
     <Content Include="Content\view\categorie.html" />
     <Content Include="Content\view\connection.html" />
     <Content Include="Content\view\creer.html" />
+    <Content Include="Content\view\inscription.html" />
     <Content Include="Content\view\intro.html" />
     <Content Include="Content\view\index.html" />
     <Content Include="Content\view\map.html" />
@@ -923,6 +924,7 @@
     <Content Include="Scripts\img\logo_old_mini.png" />
     <Content Include="Scripts\img\logo_variante.png" />
     <Content Include="Scripts\img\logo_white.png" />
+    <Content Include="Scripts\img\map-marker-icon.png" />
     <Content Include="Scripts\img\twitter.png" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
@@ -955,7 +957,7 @@
     <Compile Include="Controllers\Center.cs" />
     <Compile Include="Controllers\ConnectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\InscriptionController.cs" />
+    <Compile Include="Controllers\Inscription.cs" />
     <Compile Include="Controllers\Map.cs" />
     <Compile Include="Controllers\OtherCategorie.cs" />
     <Compile Include="Global.asax.cs">
