@@ -6,7 +6,6 @@ wisControllers.controller('indexCtrl',
 
 	    $http.get("/api/Home/Articles")
              .success(function (data) {
-                 $scope.Message = "TRUE";
                  $scope.Articles = data;
              });
 	});
@@ -77,15 +76,20 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope,
 
 wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http) {
 
-    var routeApi = "/api/Home/getNombreArticle";
+    $http.get("/api/Home/Articles")
+            .success(function (data) {
+                $scope.Articles = data;
+            });
 
-    $http.get(routeApi)
+    var routeApi2 = "/api/Home/getNombreArticle";
+
+    $http.get(routeApi2)
           .success(function (data) {
               $scope.nombreMarker = data;
 
           });
 
-
+   
     if (navigator.geolocation) {
 
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -107,10 +111,12 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
                     idKey = "id";
                 }
                 //changer les valeurs de latitude et longitude
-                var latitude = lat_min + (Math.random() * lat_range);
-                var longitude = lng_min + (Math.random() * lng_range);
+                if ($scope.Articles[i].id == i+1) {
+                    var latitude1 = $scope.Articles[i].Latitude;
+                    var longitude = $scope.Articles[i].Longitude;
+                }
                 var ret = {
-                    latitude: latitude,
+                    latitude: latitude1,
                     longitude: longitude,
                     title: 'm' + i
                 };
@@ -118,18 +124,19 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
                 return ret;
             };
 
-            $scope.randomMarkers = [];
+            $scope.Markers = [];
             // Get the bounds from the map once it's loaded
             $scope.$watch(function () {
                 return $scope.map.bounds;
             }, function (nv, ov) {
                 // Only need to regenerate once
+                var markers = [];
                 if (!ov.southwest && nv.southwest) {
-                    var markers = [];
+                   
                     for (var i = 0; i < $scope.nombreMarker; i++) {
                         markers.push(createMarker(i, $scope.map.bounds))
                     }
-                    $scope.randomMarkers = markers;
+                    $scope.Markers = markers;
                 }
             }, true);
           
@@ -158,3 +165,22 @@ wisControllers.controller('creerCtrl', ['$scope',
          }
      }
 ]);
+
+wisControllers.controller('connectionCtrl', function ($scope, $http) {
+    $scope.checkUser = function () {
+        //console.log($scope.user);
+        $http.post("/api/Connection/checkUser", $scope.user)
+            .success(function (data) {
+                if (data == true) {
+                    alert('Authentification réussie');
+                }
+                else {
+                    alert('Identifiants invalides');
+                }
+
+            })
+            .error(function () {
+                alert('Authentification impossible');
+            });
+    }
+});

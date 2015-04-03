@@ -22,8 +22,8 @@ namespace WisApp.Controllers
         public string Auteur { get; set; }
         public string Tags { get; set; }
         public string Source { get; set; }
-        public float Latitude { get; set; }
-        public float Longitude { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 
     

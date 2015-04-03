@@ -5,16 +5,10 @@ using System.Web;
 
 namespace WisApp.Models
 {
-    public class ModelConnection
+    public static class ModelConnection
     {
-        public static User user1 = new User("mohammed", "zouggari");
-        public static User user2 = new User("julien", "bergaut");
-        public static List<User> users = new List<User>();
-
-        public ModelConnection()
-        {
-            users.Add(user1);
-            users.Add(user2);
-        }
+        public static User user1 = new User("mohammed@wis", "zouggari", "Zouggari", new Date(04, 02, 1989));
+        public static User user2 = new User("julien@wis", "bergaut", "Bergaut", new Date(06, 04, 1994));
+        public static List<User> users = new List<User> (new User[] {user1, user2});
     }
 }
