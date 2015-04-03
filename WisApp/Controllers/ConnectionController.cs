@@ -11,6 +11,11 @@ namespace WisApp.Controllers
         [HttpPost]
 
         public bool checkUser(User user){
+            if (ModelConnection.users.Find(x => x.Equals(user)) != null)
+            {
+                return true;
+            }
+            /*
             if (user.Equals(ModelConnection.user1) || user.Equals(ModelConnection.user2))
             {
                 return true;
