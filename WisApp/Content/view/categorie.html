@@ -3,12 +3,15 @@
             <br>
             <div class="container-fluid">
                 <div class="row">
+                    <ul>
+                        <li ng-repeat="categorie in categoriesSelectionnees">{{categorie.Name}}</li>
+                    </ul>
                     Rechercher : <input ng-model="query">
-                    <br><br>
+                    <br /><br />
                     <div class="categories">
                         <div ng-repeat="categorie in categories | filter:query">
-                            <input type="button" ng-model="selectCategorie" class="col-md-4 btn btn-primary" value="{{categorie.Name}}" />
-                            <br /><br /><br />
+                            <input type="button" class="col-md-4" value="{{categorie.Name}}" ng-click="selectionnerCategorie(categorie)" ng-class="{green: isSelectionnee(categorie), grey: !isSelectionnee(categorie)}" />
+                            <br /><br />
                             <div ng-repeat="article in categorie.Articles">
                                 <ul><li>{{article.Titre}}</li></ul>
                             </div>

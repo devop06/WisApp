@@ -37,6 +37,8 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', fun
 	}]);
 
 wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope, $http) {
+    $scope.categoriesSelectionnees = [];
+
     $http.get('/api/Categorie/Categorie').success(function (data) {
         $scope.categories = data;
         $scope.orderProp = categories.Name;
@@ -46,13 +48,29 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope,
         $scope.autres = data;
     });
 
-    $scope.class = "grey";
 
-    $scope.changeClass = function () {
-        if ($scope.class === "grey")
-            $scope.class = "green";
-        else
-            $scope.class = "grey";
+    $scope.selectionnerCategorie = function (categorie) {
+        //Recherche dans le tableau
+        var exist = false;
+        var id = 0;
+        for (var i = 0; i < $scope.categoriesSelectionnees.length; i++) {
+            if ($scope.categoriesSelectionnees[i] === categorie) {
+                exist = true;
+                id = i;
+            }
+        }
+
+        if (exist === false) {
+            //Si existe pas alors ...
+            $scope.categoriesSelectionnees.push(categorie);
+        } else {
+            //...sinon enlever du tableau
+            $scope.categoriesSelectionnees.splice(id,1);
+        }
+    };
+
+    $scope.isSelectionnee = function (categorie) {
+        return $scope.categoriesSelectionnees.indexOf(categorie) != -1;
     };
 }]);
 
