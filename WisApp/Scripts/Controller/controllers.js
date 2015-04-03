@@ -147,23 +147,82 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
     }
 });
 
-wisControllers.controller('creerCtrl', ['$scope',
-    function($scope) {
-        $scope.titreArticle = "Quel titre pour votre article ?";
-        $scope.contentArticle = "Ici tapez votre article";
-        $scope.tagsArticle = "Ex : Tag1, Tag2, Tag3";
+// Service de Geolocalisation :
+// retourne un objet Postion position
+//      qui possede lui meme un objet coords
+wisControllers.factory("GeolocationService", ['$q', '$window', '$rootScope', function ($q, $window, $rootScope) {
+    return function () {
+        var deferred = $q.defer();
+
+        if (!$window.navigator) {
+            $rootScope.$apply(function() {
+                deferred.reject(new Error("Geolocation is not supported"));
+            });
+        } else {
+            $window.navigator.geolocation.getCurrentPosition(function (position) {
+                $rootScope.$apply(function() {
+                    deferred.resolve(position);
+                });
+            }, function (error) {
+                $rootScope.$apply(function() {
+                    deferred.reject(error);
+                });
+            });
+        }
+
+        return deferred.promise;
+    }
+}]);
+
+wisControllers.controller('creerCtrl', ['$scope', 'GeolocationService',
+    function ($scope, geolocation) {
+
+        $scope.article = {};
+
+        $scope.titreArticle = "[Quel titre pour votre article ?]";
+        $scope.contentArticle = "[Ici tapez le corps de votre article]";
+        $scope.tagsArticle = "ex : Tag1,Tag2,Tag3";
+
+        $scope.position = null;
+        $scope.message = "Nous desirons connaitre votre position ...";
+
+        geolocation().then(function (position) {
+            $scope.latitudeArticle = position.coords.latitude;
+            $scope.longitudeArticle = position.coords.longitude;
+            $scope.message = "Position recuperer !";
+        }, function (reason) {
+            $scope.message = "Votre position ne peut être determinee."
+        });
 
         $scope.submit = function () {
-        if ($scope.titreArticle) {
-         
-         $scope.titreArticle = "";
-         $scope.contentArticle = "";
-         $scope.tagsArticle = "";
-         
-          }
-        
+
+                // Article :
+                /*  id => C#
+                    date => C#
+                    heure => C#
+                    image => ...
+                    auteur => 
+                */
+            var titre = $scope.titreArticle;
+            var content = $scope.contentArticle;
+            var description = content.substr(0,50) + " ...";
+            var tags = $scope.tagsArticle;
+            var source = "W.I.S";
+
+            var latitude = $scope.latitudeArticle;
+            var longitude = $scope.longitudeArticle;
+
+                $scope.article = {
+                    "titre": titre,
+                    "content": content,
+                    "description":description,
+                    "tags": tags,
+                    "source": source,
+                    "latitude": latitude,
+                    "longitude": longitude
+                };
+            }
          }
-     }
 ]);
 
 wisControllers.controller('connectionCtrl', function ($scope, $http) {
