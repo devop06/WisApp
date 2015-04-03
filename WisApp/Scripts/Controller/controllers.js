@@ -110,15 +110,17 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
                 if (idKey == null) {
                     idKey = "id";
                 }
+                var titre;
                 //changer les valeurs de latitude et longitude
                 if ($scope.Articles[i].id == i+1) {
                     var latitude1 = $scope.Articles[i].Latitude;
                     var longitude = $scope.Articles[i].Longitude;
+                    titre = $scope.Articles[i].Titre;
                 }
                 var ret = {
                     latitude: latitude1,
                     longitude: longitude,
-                    title: 'm' + i
+                    title: titre
                 };
                 ret[idKey] = i;
                 return ret;
