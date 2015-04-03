@@ -40,7 +40,6 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope,
 
     $http.get('/api/Categorie/Categorie').success(function (data) {
         $scope.categories = data;
-        $scope.orderProp = categories.Name;
     });
 
     $http.get('/api/Categorie/OtherCategorie').success(function (data) {
