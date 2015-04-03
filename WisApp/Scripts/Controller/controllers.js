@@ -36,17 +36,16 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', fun
 	}]);
 
 wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope, $http) {
-    $scope.categoriesSelectionnees = [];
-
+    
     $http.get('/api/Categorie/Categorie').success(function (data) {
         $scope.categories = data;
-        $scope.orderProp = categories.Name;
     });
 
     $http.get('/api/Categorie/OtherCategorie').success(function (data) {
         $scope.autres = data;
     });
 
+    $scope.categoriesSelectionnees = [];
 
     $scope.selectionnerCategorie = function (categorie) {
         //Recherche dans le tableau
