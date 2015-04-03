@@ -25,5 +25,10 @@ namespace WisApp.Models
             else
                 return false;
         }
+
+        public String ToStrings()
+        {
+            return (this.jour + "/" + this.mois + "/" + this.annee);
+        }
     }
 }
