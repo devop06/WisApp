@@ -7,13 +7,16 @@ using WisApp.Models;
 
 namespace WisApp.Controllers
 {
-    public class InscriptionController : ApiController
+    public class Inscription : ApiController
     {
         [HttpPost]
 
-        public String checkInscription(User user)
+        public string checkInscription(string login, string password, string name, string date)
         {
-            String result;
+            string[] s = date.Split("/".ToCharArray());
+            Date d = new Date(int.Parse(s[0]), int.Parse(s[1]), int.Parse(s[2]));
+            User user = new User(login, password, name, d);
+            string result;
             if (ModelConnection.users.Find(x => x.Equals(user)) == null)
             {
                 ModelConnection.users.Add(user);

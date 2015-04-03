@@ -88,7 +88,7 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
 
           });
 
-   
+
     if (navigator.geolocation) {
 
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -109,15 +109,17 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
                 if (idKey == null) {
                     idKey = "id";
                 }
+                var titre;
                 //changer les valeurs de latitude et longitude
                 if ($scope.Articles[i].id == i+1) {
                     var latitude1 = $scope.Articles[i].Latitude;
                     var longitude = $scope.Articles[i].Longitude;
+                    titre = $scope.Articles[i].Titre;
                 }
                 var ret = {
                     latitude: latitude1,
                     longitude: longitude,
-                    title: 'm' + i
+                    title: titre
                 };
                 ret[idKey] = i;
                 return ret;
@@ -180,6 +182,19 @@ wisControllers.controller('connectionCtrl', function ($scope, $http) {
             })
             .error(function () {
                 alert('Authentification impossible');
+            });
+    }
+});
+
+wisControllers.controller('inscriptionCtrl', function ($scope, $http) {
+    $scope.checkInscription = function () {
+        console.log($scope.user);
+        $http.post("/api/Inscription/checkInscription", $scope.user)
+            .success(function (data) {
+                alert(data);
+            })
+            .error(function () {
+                alert('Inscription impossible pour le moment');
             });
     }
 });
