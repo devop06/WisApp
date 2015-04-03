@@ -923,6 +923,7 @@
     <Content Include="Scripts\img\logo_old_mini.png" />
     <Content Include="Scripts\img\logo_variante.png" />
     <Content Include="Scripts\img\logo_white.png" />
+    <Content Include="Scripts\img\map-marker-icon.png" />
     <Content Include="Scripts\img\twitter.png" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
