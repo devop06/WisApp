@@ -1,0 +1,31 @@
+﻿
+<div class="jumbotron col-md-6 col-md-offset-3">
+    <div class="row">
+        <div ng-controller="inscriptionCtrl">
+            <form novalidate class="simple-form" ng-submit="checkInscription()">
+                <div class='col-sm-6'>
+                    E-mail: <input type="email" ng-model="user.email" class="form-control" /><br />
+                </div>
+                <div class='col-sm-6'>
+                    Mot de passe: <input type="password" ng-model="user.password" class="form-control" /><br />
+                </div>
+                <div class='col-sm-6'>
+                    Nom : <input type="text" ng-model="user.name" class="form-control" /><br />
+                </div>
+                <div class='col-sm-6'>
+                    Date de naissance :<input type='text' class="form-control" data-date-format="dd/mm/yyyy" id='datetimepicker4' ng-model="user.date" />
+                </div>
+                <div class="col-lg-10 col-lg-offset-4">
+                    <button type="submit" id="checkInscription" class="btn btn-primary">Valider</button>
+                    <button type="reset" class="btn btn-primary">Annuler</button>
+                </div>
+            </form>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker4').datetimepicker();
+            });
+        </script>
+    </div>
+</div>
+

@@ -15,6 +15,10 @@ wisApp.config(['$routeProvider',
         templateUrl: 'view/connection.html',
         controller: 'connectionCtrl'
       }).
+      when('/inscription', {
+          templateUrl: 'view/inscription.html',
+          controller: 'inscriptionCtrl'
+      }).
 	  when('/article/:id', {
         templateUrl: 'view/article.html',
         controller: 'articleCtrl'

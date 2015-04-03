@@ -159,3 +159,16 @@ wisControllers.controller('connectionCtrl', function ($scope, $http) {
             });
     }
 });
+
+wisControllers.controller('inscriptionCtrl', function ($scope, $http) {
+    $scope.checkInscription = function () {
+        console.log($scope.user);
+        $http.post("/api/Inscription/checkInscription", $scope.user)
+            .success(function (data) {
+                alert(data);
+            })
+            .error(function () {
+                alert('Inscription impossible pour le moment');
+            });
+    }
+});
