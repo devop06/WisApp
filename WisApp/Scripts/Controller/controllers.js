@@ -38,14 +38,21 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', fun
 wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope, $http) {
     $http.get('/api/Categorie/Categorie').success(function (data) {
         $scope.categories = data;
+        $scope.orderProp = categories.Name;
     });
 
     $http.get('/api/Categorie/OtherCategorie').success(function (data) {
         $scope.autres = data;
     });
 
-    $scope.orderProp = 'Titre';
+    $scope.class = "grey";
 
+    $scope.changeClass = function () {
+        if ($scope.class === "grey")
+            $scope.class = "green";
+        else
+            $scope.class = "grey";
+    };
 }]);
 
 
@@ -140,3 +147,22 @@ wisControllers.controller('creerCtrl', ['$scope',
          }
      }
 ]);
+
+wisControllers.controller('connectionCtrl', function ($scope, $http) {
+    $scope.checkUser = function () {
+        //console.log($scope.user);
+        $http.post("/api/Connection/checkUser", $scope.user)
+            .success(function (data) {
+                if (data == true) {
+                    alert('Authentification réussie');
+                }
+                else {
+                    alert('Identifiants invalides');
+                }
+
+            })
+            .error(function () {
+                alert('Authentification impossible');
+            });
+    }
+});
