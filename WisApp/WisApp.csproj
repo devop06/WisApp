@@ -957,7 +957,7 @@
     <Compile Include="Controllers\Center.cs" />
     <Compile Include="Controllers\ConnectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Inscription.cs" />
+    <Compile Include="Controllers\InscriptionController.cs" />
     <Compile Include="Controllers\Map.cs" />
     <Compile Include="Controllers\OtherCategorie.cs" />
     <Compile Include="Global.asax.cs">
