@@ -999,6 +999,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Default\" />
     <Folder Include="Views\Inscription\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
