@@ -16,7 +16,7 @@ namespace WisApp.Controllers
          * Ajouter un article aux favoris pour un utilisateur
          * (voir classe Users)
          **/
-         [HttpGet]
+         [HttpPost]
         public void ajouterArticleFavo(int id)
         {
             HomeController h = new HomeController();
