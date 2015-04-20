@@ -221,11 +221,12 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
     function ($scope, $http, geolocation) {
 
         $scope.article = {};
-        /*
+        $scope.placeholder = {};
+        
         $scope.placeholder.Titre = "[Quel titre pour votre article ?]";
         $scope.placeholder.Content = "[Ici tapez le corps de votre article]";
         $scope.placeholder.Tags = "ex : Tag1,Tag2,Tag3";
-        */
+        
         $scope.position = null;
         $scope.message = "Nous desirons connaitre votre position ...";
 
