@@ -22,7 +22,7 @@ namespace WisApp.Controllers
             HomeController h = new HomeController();
            // trouve l'article selectionné dans la liste des articles présent dans la base
             Article ArticleFavo = h.Articles().Find(x => x.id == id); 
-            u.ajouterArticleFavoris(id); // ajoute un article favoris pour un utilisateur */
+            u.ajouterArticleFavoris(ArticleFavo.id); // ajoute un article favoris pour un utilisateur */
         }
 
         [HttpGet]
