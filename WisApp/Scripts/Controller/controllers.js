@@ -217,21 +217,21 @@ wisControllers.factory("GeolocationService", ['$q', '$window', '$rootScope', fun
     }
 }]);
 
-wisControllers.controller('creerCtrl', ['$scope', 'GeolocationService',
-    function ($scope, geolocation) {
+wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
+    function ($scope, $http, geolocation) {
 
         $scope.article = {};
-
-        $scope.titreArticle = "[Quel titre pour votre article ?]";
-        $scope.contentArticle = "[Ici tapez le corps de votre article]";
-        $scope.tagsArticle = "ex : Tag1,Tag2,Tag3";
-
+        /*
+        $scope.placeholder.Titre = "[Quel titre pour votre article ?]";
+        $scope.placeholder.Content = "[Ici tapez le corps de votre article]";
+        $scope.placeholder.Tags = "ex : Tag1,Tag2,Tag3";
+        */
         $scope.position = null;
         $scope.message = "Nous desirons connaitre votre position ...";
 
         geolocation().then(function (position) {
-            $scope.latitudeArticle = position.coords.latitude;
-            $scope.longitudeArticle = position.coords.longitude;
+            $scope.article.Latitude = position.coords.latitude;
+            $scope.article.Longitude = position.coords.longitude;
             $scope.message = "Position recuperer !";
         }, function (reason) {
             $scope.message = "Votre position ne peut être determinee."
@@ -246,24 +246,42 @@ wisControllers.controller('creerCtrl', ['$scope', 'GeolocationService',
                     image => ...
                     auteur => 
                 */
-            var titre = $scope.titreArticle;
-            var content = $scope.contentArticle;
+            var titre = $scope.article.Titre;
+            var content = $scope.article.Content;
             var description = content.substr(0,50) + " ...";
-            var tags = $scope.tagsArticle;
-            var source = "W.I.S";
+            var tags = $scope.article.Tags;
+            var auteur = "W.I.S";
+            var image = "W.I.S";
+            var visibilite = $scope.article.Visibilite;
 
-            var latitude = $scope.latitudeArticle;
-            var longitude = $scope.longitudeArticle;
+            var latitude = $scope.article.Latitude;
+            var longitude = $scope.article.Longitude;
 
-                $scope.article = {
-                    "titre": titre,
-                    "content": content,
-                    "description":description,
-                    "tags": tags,
-                    "source": source,
-                    "latitude": latitude,
-                    "longitude": longitude
-                };
+            $scope.article = {
+                "Titre": titre,
+                "Content": content,
+                "Description":description,
+                "Tags": tags,
+                "Auteur": auteur,
+                "Image": image,
+                "Latitude": latitude,
+                "Longitude": longitude,
+                "Visibilite": visibilite
+            };
+
+            $http.post("/api/values/PartageAjout",
+                JSON.stringify($scope.article),
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+          .success(function (data) {
+              $scope.article = data;
+          })
+          .error(function () {
+              alert('marche pas');
+          });
             }
          }
 ]);
