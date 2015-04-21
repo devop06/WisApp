@@ -25,15 +25,30 @@ wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', fu
 
 wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
 
-    var id = $routeParams.id;
-    var routeApi = "/api/Home/getArticle/" + id;
+       var id = $routeParams.id;
+       var routeApi = "/api/Home/getArticle/" + id;
+       var routeApi2 = "/api/Favoris/estFavoris/" + id;
+       var routeApi3 = "/api/Favoris/ajouterArticleFavo/" + id;
     
-    $http.get(routeApi)
-          .success(function (data) {
-              $scope.article = data;
-              
+      $http.get(routeApi)
+              .success(function (data) {
+                  $scope.article = data;
+             
+              });
+
+      $http.get(routeApi2).success(function (data) {
+          $scope.favoris = data;
+
+      });
+      
+      $scope.ajoutFavoris = function () {
+          $http.post(routeApi3).success(function (data,status,header){
+              alert("coucou");
           });
-	}]);
+      };
+}]);
+
+
 
 wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope, $http) {
     

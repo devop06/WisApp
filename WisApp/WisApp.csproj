@@ -951,14 +951,15 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\Article.cs" />
+    <Compile Include="Controllers\FavorisController.cs" />
+    <Compile Include="Models\Article.cs" />
     <Compile Include="Controllers\Categorie.cs" />
     <Compile Include="Controllers\CategorieController.cs" />
-    <Compile Include="Controllers\Center.cs" />
+    <Compile Include="Models\Center.cs" />
     <Compile Include="Controllers\ConnectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Inscription.cs" />
-    <Compile Include="Controllers\Map.cs" />
+    <Compile Include="Models\Map.cs" />
     <Compile Include="Controllers\OtherCategorie.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

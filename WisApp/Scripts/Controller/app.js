@@ -26,6 +26,10 @@ wisApp.config(['$routeProvider',
 	  when('/partager/:id', {
         templateUrl: 'view/partager.html',
         controller: 'partagerCtrl'
+	  }).
+      when('/ajoutfavoris/:id', { // favoris
+         templateUrl: 'view/article.html',
+         controller: 'favoCtrl'
       }).
 	  when('/map', {
         templateUrl: 'view/map.html',

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Http;
 using WisApp.Models;
 
-namespace WisApp.Controllers
+namespace WisApp.Models
 {
     public class ConnectionController : ApiController {
         [HttpPost]
