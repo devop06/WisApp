@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WisApp.Models;
-
-
 
 namespace WisApp.Models
 {
@@ -13,24 +10,20 @@ namespace WisApp.Models
         public string login { get; set; }
         public string password { get; set; }
         public string nom { get; set; }
-        public Date date { get; set; }
+        public List<int> listeIdArticleFavo {get;set;}
 
-        public List<int> idArticlesFavoris;
-       
         public User()
         {
-            this.idArticlesFavoris = new List<int>();
-            this.idArticlesFavoris.Add(1); // article 1 en favoris
+            this.listeIdArticleFavo = new List<int>();
+            this.listeIdArticleFavo.Add(1);
         }
 
-        public User(string login, string password, string nom, Date date)
+        public User(string login, string password, string nom)
         {
             this.login = login;
             this.password = password;
             this.nom = nom;
-            this.date = date;
-           
-            
+            this.listeIdArticleFavo = new List<int>();
         }
 
         public bool Equals(User user)
@@ -42,9 +35,14 @@ namespace WisApp.Models
                 return false;
         }
 
-        public void ajouterArticleFavoris(int idArticles)
+        public void ajouterArticleFavoris(int id)
         {
-            this.idArticlesFavoris.Add(idArticles);
+            this.listeIdArticleFavo.Add(id);
+        }
+
+        public void enleverArticleFavoris(int id)
+        {
+            this.listeIdArticleFavo.Remove(id);
         }
     }
 }

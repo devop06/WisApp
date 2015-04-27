@@ -10,11 +10,11 @@
                  <br/>Source : {{ article.Source }}
                  <br />Auteur : {{ article.Auteur }}
                  <br/>  Tag : {{ article.Tags }}
-                 
              </p>
-            <a href="#/article/{{article.id}}" ng-click="ajoutFavoris()" class="btn btn-primary btn-fab btn-raised mdi-action-favorite-outline col-xs-9"></a>
+           <a href="#/ajouterfavoris/{{article.id}}" ng-click="save()" class="btn btn-primary btn-fab btn-raised mdi-action-favorite-outline col-xs-9"></a>
              <br/>
-        est favoris ? : {{favoris}}
+            <p>{{test}}</p>
+           
         </div>
            
            <img  src="{{article.Image}}" alt="image info"/>

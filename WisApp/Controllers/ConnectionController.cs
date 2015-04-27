@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Http;
 using WisApp.Models;
 
-namespace WisApp.Models
+namespace WisApp.Controllers
 {
     public class ConnectionController : ApiController {
         [HttpPost]
@@ -15,16 +15,6 @@ namespace WisApp.Models
             {
                 return true;
             }
-            /*
-            if (user.Equals(ModelConnection.user1) || user.Equals(ModelConnection.user2))
-            {
-                return true;
-            }
-            /*
-            if(user.login == "julien@wis" && user.password == "bergaut"){
-                return true;
-            }
-            */
             else
                 return false;
         }

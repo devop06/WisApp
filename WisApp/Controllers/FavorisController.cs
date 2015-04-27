@@ -10,34 +10,41 @@ namespace WisApp.Controllers
 {
     public class FavorisController : ApiController
     {
-      //  private User u;
-        
-        
+        private User u = new User();
+
         /**
          * Ajouter un article aux favoris pour un utilisateur
          * (voir classe Users)
          **/
-       
-        public void ajouterArticleFavo(int idArticle)
+        [HttpPost]
+        public void ajouterArticleFavo(int id)
         {
-          /*  HomeController h = new HomeController();
-           // trouve l'article selectionné dans la liste des articles présent dans la base
-            Article ArticleFavo = h.Articles().Find(x => x.id == idArticle);
-            
-            u.ajouterArticleFavoris(ArticleFavo); // ajoute un article favoris pour un utilisateur */
+            HomeController h = new HomeController();
+            // trouve l'article selectionné dans la liste des articles présent dans la base
+            Article ArticleFavo = h.Articles().Find(x => x.id == id);
+            u.ajouterArticleFavoris(ArticleFavo.id); // ajoute un article favoris pour un utilisateur */
         }
-        [HttpGet]
-        public int estFavoris(int idArticle)
+
+        [HttpPost]
+        public void enleverArticleFavo(int id)
         {
-           /* if(u.listeArticleFavo.Exists(x => x.id == idArticle))
+            HomeController h = new HomeController();
+            // trouve l'article selectionné dans la liste des articles présent dans la base
+            Article ArticleFavo = h.Articles().Find(x => x.id == id);
+            u.enleverArticleFavoris(ArticleFavo.id); // ajoute un article favoris pour un utilisateur */
+        }
+
+        [HttpGet]
+        public Boolean estFavoris(int id)
+        {
+            if (u.listeIdArticleFavo.Exists(x => x == id))
             {
                 return true;
             }
             else
             {
                 return false;
-            */
-            return 2221;
+            }
         }
 
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WisApp.Models
+namespace WisApp.Controllers
 {
     public class Map
     {
