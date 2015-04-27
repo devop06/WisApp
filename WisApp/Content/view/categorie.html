@@ -20,11 +20,28 @@
                     </div>
                 </div>
                 <br>
+                <input type="button" class="btn btn-primary" ng-click="validerCategorie()" value="Valider" />
+                <button id="ajout" class="btn btn-primary" ng-click="open()">+</button>
                 <!--<button id="ajout" class="btn btn-primary"  data-toggle="modal" data-target="#news_categ">+</button>-->
-                <button open-dialog id="ajout" class="btn btn-primary">+</button>
+                <!--<button open-dialog id="ajout" class="btn btn-primary">+</button>-->
             </div>
         </div>
-        
+
+        <!--<div modal="showModal" close="cancel()">
+            <div class="modal-header">
+                <h4>Nouvelles catégories</h4>
+            </div>
+            <div class="modal-body">
+                <div ng-repeat="autre in autres">
+                    <input ng-checked="cocher()" type="checkbox" name="autre">{{autre.name}}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" ng-click="ok()">Enregistrer</button>
+                <!--<button class="btn" ng-click="cancel()">Cancel</button>
+            </div>
+        </div>-->
+
         <!--<div class="modal hide fade" id="myModal" ng-controller="ModalCtrl">
             <div class="modal-header">
                 <h2>Ajouter des catégories</h2>

@@ -145,6 +145,20 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope,
         }
     };
 
+    // Ajouter les catégories séléctionnées à l'utilisateur
+    $scope.validerCategorie = function () {
+        console.log($scope.categoriesSelectionnees);
+        $http.post('/api/Categorie/addCategories', $scope.categoriesSelectionnees)
+            .success(function (data) {
+                //alert(data);
+                alert("Ajout réussi");
+            })
+            .error(function () {
+                alert('Ajout non effectué');
+            });
+
+    };
+
     $scope.isSelectionnee = function (categorie) {
         return $scope.categoriesSelectionnees.indexOf(categorie) != -1;
     };
