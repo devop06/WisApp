@@ -15,7 +15,6 @@ namespace WisApp.Models
         public User()
         {
             this.listeIdArticleFavo = new List<int>();
-            this.listeIdArticleFavo.Add(1);
         }
 
         public User(string login, string password, string nom)

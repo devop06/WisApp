@@ -10,7 +10,7 @@ namespace WisApp.Controllers
 {
     public class FavorisController : ApiController
     {
-        private User u = new User();
+        static User u = new User();
 
         /**
          * Ajouter un article aux favoris pour un utilisateur

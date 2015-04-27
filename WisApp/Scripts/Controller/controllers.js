@@ -70,7 +70,9 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', fun
     var id = $routeParams.id;
     var routeApi = "/api/Home/getArticle/" + id;
     var routeApi2 = "/api/Favoris/estFavoris/" + id;
-    
+    var routeApi3 = "/api/Favoris/ajouterArticleFavo/" + id;
+    var routeApi4 = "/api/Favoris/enleverArticleFavo/" + id;
+
     $http.get(routeApi)
           .success(function (data) {
               $scope.article = data;
@@ -80,36 +82,25 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', fun
     $http.get(routeApi2)
          .success(function (data) {
              if (data == true)
-                 $scope.test = "article déja favo";
+                 $scope.estFavoris = true;
              else
-                 $scope.test = "pas favo";
+                 $scope.estFavoris = false;
          });
-    }]
-);
 
+    $scope.ajoutfavo = function () {
+        $http.post(routeApi3, id).
+             success(function (data, status, headers, config) {  
+             });
+    }
 
-// faire
-wisControllers.controller('ajouterfavoris', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
-
-    var id = $routeParams.id;
-  
-    var routeApi = "/api/Home/getArticle/" + id;
-    var routeApi2 = "/api/Favoris/ajouterArticleFavo/" + id; // ajout aux favoris
-
-    $http.get(routeApi)
-      .success(function (data) {
-          $scope.article = data;
-
-      });
-
-    $http.post(routeApi2, id).
-     success(function (data, status, headers, config) {
-         console.log('ok',data);
-    }).
-     error(function (data, status, headers, config) {
-         console.log('ko');
-     });
+    $scope.retirerfavo = function () {
+        $http.post(routeApi4, id).
+             success(function (data, status, headers, config) {
+             });
+    }
 }]
+
+  
 );
 
 
@@ -224,11 +215,6 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
         });
     }
 
-
-
-
-
-
     var events = {
         places_changed: function (searchBox) {
             var place = searchBox.getPlaces();
@@ -254,9 +240,6 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
         }
     };
     $scope.searchbox = { template: 'searchbox.tpl.html', events: events };
-
-
-
 });
 
 // Service de Geolocalisation :
