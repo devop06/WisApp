@@ -3,7 +3,14 @@
 
 <div class="row">
 
-    <div class="jumbotron col-md-6 col-md-offset-3 ">
+    <div id="searchDiv" class="jumbotron col-sm-4 col-sm-push-8 ">
+        <label for="inputRecherche" class="control-label">Localisez les actualit&eacute;s :</label>
+        <script type="text/ng-template" id="searchbox.tpl.html">
+            <input class="form-control" id="inputRecherche" value="{{ map.recherche }}" type="text" placeholder="ex : Paris, La Rochelle, NewYork..." />
+        </script>
+    </div>
+
+    <div class="jumbotron col-sm-offset-2 col-sm-6 col-sm-pull-4 ">
         <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
             <ui-gmap-search-box template="searchbox.template" events="searchbox.events" parentdiv="'searchDiv'"></ui-gmap-search-box>
             <ui-gmap-markers models="Markers" coords="'self'" docluster=true click="" options="{animation:2}">
@@ -14,12 +21,7 @@
         </ui-gmap-google-map>
     </div>
 
-    <div id="searchDiv" class="jumbotron col-md-3 ">
-        <label for="inputRecherche" class="control-label">Localisez les actualit&eacute;s :</label>
-        <script type="text/ng-template" id="searchbox.tpl.html">
-            <input class="form-control" id="inputRecherche" value="{{ map.recherche }}" type="text" placeholder="ex : Paris, La Rochelle, NewYork..." />
-        </script>
-    </div>
+    
 
-
+    
 </div>

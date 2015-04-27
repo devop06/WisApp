@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExCategorie.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace WisApp.Models
         public string password { get; set; }
         public string nom { get; set; }
         public List<int> listeIdArticleFavo {get;set;}
+        public List<Categorie> categories { get; set; }
 
         public User()
         {
@@ -42,6 +44,11 @@ namespace WisApp.Models
         public void enleverArticleFavoris(int id)
         {
             this.listeIdArticleFavo.Remove(id);
+        }
+
+        public void addCategories(List<Categorie> categories)
+        {
+            this.categories = categories;
         }
     }
 }

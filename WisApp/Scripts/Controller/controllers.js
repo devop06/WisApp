@@ -136,6 +136,20 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope,
         }
     };
 
+    // Ajouter les catégories séléctionnées à l'utilisateur
+    $scope.validerCategorie = function () {
+        console.log($scope.categoriesSelectionnees);
+        $http.post('/api/Categorie/addCategories', $scope.categoriesSelectionnees)
+            .success(function (data) {
+                //alert(data);
+                alert("Ajout réussi");
+            })
+            .error(function () {
+                alert('Ajout non effectué');
+            });
+
+    };
+
     $scope.isSelectionnee = function (categorie) {
         return $scope.categoriesSelectionnees.indexOf(categorie) != -1;
     };
@@ -190,8 +204,8 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
     }
 
     if (navigator.geolocation) {
-
         navigator.geolocation.getCurrentPosition(function (position) {
+                         
 
             $scope.map = { center: { latitude: position.coords.latitude, longitude: position.coords.longitude }, zoom: 18 };
             $scope.options = {
@@ -200,10 +214,35 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
             afficherMarkers();
             $scope.$apply();
 
-        }, function () { });
+        }, function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    console.log("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    console.log("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    console.log("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    console.log("An unknown error occurred.");
+                    break;
+            }
+            $http.get("/api/Map/initMap")
+            .success(function (data) {
+            $scope.map = data;
+            afficherMarkers();
+           
+        })
+        .error(function (data) {
+
+        });
+        });
 
 
     } else {
+
         $http.get("/api/Map/initMap")
         .success(function (data) {
             $scope.map = data;
