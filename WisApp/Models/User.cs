@@ -10,10 +10,12 @@ namespace WisApp.Models
         public string login { get; set; }
         public string password { get; set; }
         public string nom { get; set; }
+        public List<int> listeIdArticleFavo {get;set;}
 
         public User()
         {
-
+            this.listeIdArticleFavo = new List<int>();
+            this.listeIdArticleFavo.Add(1);
         }
 
         public User(string login, string password, string nom)
@@ -21,6 +23,7 @@ namespace WisApp.Models
             this.login = login;
             this.password = password;
             this.nom = nom;
+            this.listeIdArticleFavo = new List<int>();
         }
 
         public bool Equals(User user)
@@ -30,6 +33,16 @@ namespace WisApp.Models
                 return true;
             else
                 return false;
+        }
+
+        public void ajouterArticleFavoris(int id)
+        {
+            this.listeIdArticleFavo.Add(id);
+        }
+
+        public void enleverArticleFavoris(int id)
+        {
+            this.listeIdArticleFavo.Remove(id);
         }
     }
 }

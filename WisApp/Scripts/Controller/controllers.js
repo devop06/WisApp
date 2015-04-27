@@ -69,13 +69,49 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', fun
 
     var id = $routeParams.id;
     var routeApi = "/api/Home/getArticle/" + id;
+    var routeApi2 = "/api/Favoris/estFavoris/" + id;
     
     $http.get(routeApi)
           .success(function (data) {
               $scope.article = data;
               
           });
-	}]);
+
+    $http.get(routeApi2)
+         .success(function (data) {
+             if (data == true)
+                 $scope.test = "article déja favo";
+             else
+                 $scope.test = "pas favo";
+         });
+    }]
+);
+
+
+// faire
+wisControllers.controller('ajouterfavoris', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+
+    var id = $routeParams.id;
+  
+    var routeApi = "/api/Home/getArticle/" + id;
+    var routeApi2 = "/api/Favoris/ajouterArticleFavo/" + id; // ajout aux favoris
+
+    $http.get(routeApi)
+      .success(function (data) {
+          $scope.article = data;
+
+      });
+
+    $http.post(routeApi2, id).
+     success(function (data, status, headers, config) {
+         console.log('ok',data);
+    }).
+     error(function (data, status, headers, config) {
+         console.log('ko');
+     });
+}]
+);
+
 
 wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope, $http) {
     
