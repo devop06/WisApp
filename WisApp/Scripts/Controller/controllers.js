@@ -116,78 +116,111 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope,
 
 
 wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http) {
-
+    var nombreMarker;
+    var Articles;
     $http.get("/api/Home/Articles")
-            .success(function (data) {
-                $scope.Articles = data;
-            });
+             .success(function (data) {
+                 Articles = data;
+             });
 
     var routeApi2 = "/api/Home/getNombreArticle";
 
     $http.get(routeApi2)
           .success(function (data) {
-              $scope.nombreMarker = data;
-
+              nombreMarker = data;
           });
 
+
+    // création des markers
+    var createMarker = function (i, idKey) {
+
+
+        if (idKey == null) {
+            idKey = "id";
+        }
+        var titre;
+        //changer les valeurs de latitude et longitude
+        if (Articles[i].id == i + 1) {
+            var latitude1 = Articles[i].Latitude;
+            var longitude = Articles[i].Longitude;
+            titre = Articles[i].Titre;
+        }
+        var ret = {
+            latitude: latitude1,
+            longitude: longitude,
+            title: titre
+        };
+        ret[idKey] = i;
+        return ret;
+    };
+
+    var afficherMarkers = function () {
+        var markers = [];
+        for (var i = 0; i < nombreMarker; i++) {
+            markers.push(createMarker(i))
+        }
+        $scope.Markers = markers;
+    }
 
     if (navigator.geolocation) {
 
         navigator.geolocation.getCurrentPosition(function (position) {
 
-            $scope.map = { center: { latitude: position.coords.latitude, longitude: position.coords.longitude }, zoom: 4, bounds: {} };
+            $scope.map = { center: { latitude: position.coords.latitude, longitude: position.coords.longitude }, zoom: 18 };
             $scope.options = {
                 scrollwheel: true
             };
-
-
-            // création des markers
-            var createMarker = function (i, bounds, idKey) {
-                var lat_min = bounds.southwest.latitude,
-                  lat_range = bounds.northeast.latitude - lat_min,
-                  lng_min = bounds.southwest.longitude,
-                  lng_range = bounds.northeast.longitude - lng_min;
-
-                if (idKey == null) {
-                    idKey = "id";
-                }
-                var titre;
-                //changer les valeurs de latitude et longitude
-                if ($scope.Articles[i].id == i+1) {
-                    var latitude1 = $scope.Articles[i].Latitude;
-                    var longitude = $scope.Articles[i].Longitude;
-                    titre = $scope.Articles[i].Titre;
-                }
-                var ret = {
-                    latitude: latitude1,
-                    longitude: longitude,
-                    title: titre
-                };
-                ret[idKey] = i;
-                return ret;
-            };
-
-            $scope.Markers = [];
-            // Get the bounds from the map once it's loaded
-            $scope.$watch(function () {
-                return $scope.map.bounds;
-            }, function (nv, ov) {
-                // Only need to regenerate once
-                var markers = [];
-                if (!ov.southwest && nv.southwest) {
-                   
-                    for (var i = 0; i < $scope.nombreMarker; i++) {
-                        markers.push(createMarker(i, $scope.map.bounds))
-                    }
-                    $scope.Markers = markers;
-                }
-            }, true);
-          
+            afficherMarkers();
             $scope.$apply();
-           
+
         }, function () { });
 
+
+    } else {
+        $http.get("/api/Map/initMap")
+        .success(function (data) {
+            $scope.map = data;
+            afficherMarkers();
+            $scope.$apply();
+        })
+        .error(function (data) {
+
+        });
     }
+
+
+
+
+
+
+    var events = {
+        places_changed: function (searchBox) {
+            var place = searchBox.getPlaces();
+            if (!place || place == 'undefined' || place.length == 0) {
+                console.log('no place data :(');
+                return;
+            }
+
+            $scope.map = {
+                "center": {
+                    "latitude": place[0].geometry.location.lat(),
+                    "longitude": place[0].geometry.location.lng()
+                },
+                "zoom": 18
+            };
+            $scope.marker = {
+                id: 0,
+                coords: {
+                    latitude: place[0].geometry.location.lat(),
+                    longitude: place[0].geometry.location.lng()
+                }
+            };
+        }
+    };
+    $scope.searchbox = { template: 'searchbox.tpl.html', events: events };
+
+
+
 });
 
 // Service de Geolocalisation :
