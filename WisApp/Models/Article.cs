@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WisApp.Controllers
+namespace WisApp.Models
 {
     public class Article
     {

@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WisApp.Controllers;
-
+using WisApp.Models;
 namespace ExCategorie.Controllers
 {
     public class CategorieController : ApiController

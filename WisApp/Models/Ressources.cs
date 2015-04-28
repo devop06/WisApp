@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WisApp.Controllers;
+using WisApp.Models;
 
 namespace WisApp.Models
 {
@@ -18,7 +19,7 @@ namespace WisApp.Models
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         // Utilisateur
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        public static List<WisApp.Controllers.Article> listArticle = new List<WisApp.Controllers.Article>();
+        public static List<Article> listArticle = new List<Article>();
         private static void initArticle()
         {
 
@@ -79,7 +80,7 @@ namespace WisApp.Models
 
         public void AddArticle(int id, string Titre)
         {
-            listArticle.Add(new WisApp.Controllers.Article { id = id, Titre = Titre });
+            listArticle.Add(new Article { id = id, Titre = Titre });
         }
 
     }
