@@ -18,14 +18,13 @@
             <div ng-if="estFavoris">
                 <a href="#/article/{{article.id}}" ng-click="retirerfavo()" class="btn btn-primary btn-fab btn-raised mdi-action-favorite col-xs-9"></a>
             </div>
-           
-           
+          
             <br/>
             <p>{{test}}</p>
            
         </div>
            
-           <img  src="{{article.Image}}" alt="image info"/>
+            <img src="{{article.Image}}" ng-hide="isNotNull()" alt="image info" />
    <div style="margin-left: 5%;margin-right: 5%; text-indent: 5%;">
               
        <p><br/>{{ article.Content }}</p>
