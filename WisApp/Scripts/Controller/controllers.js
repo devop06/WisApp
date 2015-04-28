@@ -11,7 +11,7 @@ wisControllers.controller('indexCtrl',
 	});
 
 
-wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', '$location', function ($scope, $http, $routeParams, $location) {
 
     var id = $routeParams.id;
     var routeApi = "/api/Home/getArticle/" + id;
@@ -31,6 +31,7 @@ wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', fu
                 })
           .success(function (data) {
               $scope.article = data;
+              $location.path('/article/' + $scope.article.id);
           })
           .error(function () {
               alert('marche pas');
@@ -309,8 +310,8 @@ wisControllers.factory("GeolocationService", ['$q', '$window', '$rootScope', fun
     }
 }]);
 
-wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
-    function ($scope, $http, geolocation) {
+wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService', '$location',
+    function ($scope, $http, geolocation, $location) {
 
         $scope.article = {};
         $scope.placeholder = {};
@@ -371,6 +372,8 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
                 })
           .success(function (data) {
               $scope.article = data;
+              alert("Votre article \u00E0 bien \u00E9t\u00E9 ajout\u00E9");
+              $location.path('/article/'+$scope.article.id);
           })
           .error(function () {
               alert('marche pas');
