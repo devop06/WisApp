@@ -40,32 +40,6 @@ wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', '$
     
 }]);
 
-/*wisControllers.controller('PartageAjoutController', ['$scope', '$http', function ($scope, $http) {
-    $scope.ArticlePartage = {};
-    $scope.ArticlePartage.Titre = "Titre par défaut";
-    $scope.ArticlePartage.Content = "";
-    $scope.ArticlePartage.Tags = "";
-    $scope.ArticlePartage = $scope.article;
-
-    //var data = { "id": 1, "Titre": "Toto", "Content": "test" };
-    $scope.toto = function () {
-        $http.post("/api/values/PartageAjout",
-                JSON.stringify($scope.ArticlePartage),
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-          .success(function (data) {
-              $scope.ArticlePartage = data;
-          })
-          .error(function () {
-              alert('marche pas');
-          });
-    }
-
-}]);*/
-
 wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', '$route', function ($scope, $http, $routeParams, $route) {
    
     var id = $routeParams.id;
@@ -76,7 +50,14 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', '$r
 
     $http.get(routeApi)
           .success(function (data) {
-              $scope.article = data;      
+              $scope.article = data;
+              // retourne bool en fonction de si l'image est spécifiée ou non
+              $scope.isNotNull = function () {
+                  if ($scope.article.Image === "")
+                      return false;
+                  else
+                      return true;
+              };
           });
 
     $http.get(routeApi2)
@@ -100,9 +81,9 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', '$r
                  $route.reload();
              });
     }
-}]
 
-  
+   
+}] 
 );
 
 
