@@ -1,4 +1,4 @@
-var wisControllers = angular.module('wisControllers', []);
+var wisControllers = angular.module('wisControllers',[]);
 
 wisControllers.controller('indexCtrl',
 	function ($scope, $http) {
@@ -65,8 +65,8 @@ wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', fu
 
 }]);*/
 
-wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
-
+wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', '$route', function ($scope, $http, $routeParams, $route) {
+   
     var id = $routeParams.id;
     var routeApi = "/api/Home/getArticle/" + id;
     var routeApi2 = "/api/Favoris/estFavoris/" + id;
@@ -75,8 +75,7 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', fun
 
     $http.get(routeApi)
           .success(function (data) {
-              $scope.article = data;
-              
+              $scope.article = data;      
           });
 
     $http.get(routeApi2)
@@ -89,13 +88,15 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', fun
 
     $scope.ajoutfavo = function () {
         $http.post(routeApi3, id).
-             success(function (data, status, headers, config) {  
+             success(function (data, status, headers, config) {
+                 $route.reload();
              });
     }
 
     $scope.retirerfavo = function () {
         $http.post(routeApi4, id).
              success(function (data, status, headers, config) {
+                 $route.reload();
              });
     }
 }]
