@@ -379,21 +379,21 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
          }
 ]);
 
-wisControllers.controller('connectionCtrl', function ($scope, $http) {
+wisControllers.controller('connectionCtrl', function ($scope, $http, $location) {
     $scope.checkUser = function () {
         //console.log($scope.user);
         $http.post("/api/Connection/checkUser", $scope.user)
             .success(function (data) {
                 if (data == true) {
-                    alert('Authentification réussie');
+                    alert("Authentification r\u00E9ussie, vous allez \u00EAtre redirig\u00E9...");
+                    $location.path('/');
                 }
                 else {
-                    alert('Identifiants invalides');
+                    alert('Identifiants invalides...');
                 }
-
             })
             .error(function () {
-                alert('Authentification impossible');
+                alert('Authentification impossible...');
             });
     }
 });
