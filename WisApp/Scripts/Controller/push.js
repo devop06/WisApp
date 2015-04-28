@@ -3,7 +3,7 @@
     // Reference the proxy for the hub.  
     var articleHubProxy = connection.createHubProxy('articleHub');
     articleHubProxy.on('refresh', function () {
-        if (window.location == "http://localhost:52454/Content/index.html#/" || window.location == "http://localhost:52454/content/#/") {
+        if (document.location.href == "http://localhost:52454/Content/index.html#/" || document.location.href == "http://localhost:52454/content/#/") {
             window.location.reload();
         }
     })
