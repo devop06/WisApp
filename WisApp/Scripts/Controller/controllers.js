@@ -93,7 +93,7 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
                 "Visibilite": visibilite
             };
 
-            $http.post("/api/values/PartageAjout",
+            $http.post("/api/Articles/PostArticle",
                 JSON.stringify($scope.article),
                 {
                     headers: {
