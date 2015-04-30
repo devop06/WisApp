@@ -1,4 +1,4 @@
-var wisControllers = angular.module('wisControllers', []);
+var wisControllers = angular.module('wisControllers',[]);
 
 wisControllers.controller('indexCtrl',
 	function ($scope, $http) {
@@ -26,7 +26,7 @@ wisControllers.controller('indexCtrl',
 	});
 
 
-wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', '$location', function ($scope, $http, $routeParams, $location) {
 
     var id = $routeParams.id;
     var routeApi = "/api/Home/getArticle/" + id;
@@ -46,6 +46,7 @@ wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', fu
                 })
           .success(function (data) {
               $scope.article = data;
+              $location.path('/article/' + $scope.article.id);
           })
           .error(function () {
               alert('marche pas');
@@ -54,77 +55,50 @@ wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', fu
     
 }]);
 
-/*wisControllers.controller('PartageAjoutController', ['$scope', '$http', function ($scope, $http) {
-    $scope.ArticlePartage = {};
-    $scope.ArticlePartage.Titre = "Titre par défaut";
-    $scope.ArticlePartage.Content = "";
-    $scope.ArticlePartage.Tags = "";
-    $scope.ArticlePartage = $scope.article;
-
-    //var data = { "id": 1, "Titre": "Toto", "Content": "test" };
-    $scope.toto = function () {
-        $http.post("/api/values/PartageAjout",
-                JSON.stringify($scope.ArticlePartage),
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-          .success(function (data) {
-              $scope.ArticlePartage = data;
-          })
-          .error(function () {
-              alert('marche pas');
-          });
-    }
-
-}]);*/
-
-wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
-
+wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', '$route', function ($scope, $http, $routeParams, $route) {
+   
     var id = $routeParams.id;
     var routeApi = "/api/Home/getArticle/" + id;
     var routeApi2 = "/api/Favoris/estFavoris/" + id;
-    
+    var routeApi3 = "/api/Favoris/ajouterArticleFavo/" + id;
+    var routeApi4 = "/api/Favoris/enleverArticleFavo/" + id;
+
     $http.get(routeApi)
           .success(function (data) {
               $scope.article = data;
-              
+              // retourne bool en fonction de si l'image est spécifiée ou non
+              $scope.isNotNull = function () {
+                  if ($scope.article.Image === "")
+                      return false;
+                  else
+                      return true;
+              };
           });
 
     $http.get(routeApi2)
          .success(function (data) {
              if (data == true)
-                 $scope.test = "article déja favo";
+                 $scope.estFavoris = true;
              else
-                 $scope.test = "pas favo";
+                 $scope.estFavoris = false;
          });
-    }]
-);
 
+    $scope.ajoutfavo = function () {
+        $http.post(routeApi3, id).
+             success(function (data, status, headers, config) {
+                 $route.reload();
+             });
+    }
 
-// faire
-wisControllers.controller('ajouterfavoris', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+    $scope.retirerfavo = function () {
+        $http.post(routeApi4, id).
+             success(function (data, status, headers, config) {
+                 $route.reload();
+             });
+    }
 
-    var id = $routeParams.id;
-  
-    var routeApi = "/api/Home/getArticle/" + id;
-    var routeApi2 = "/api/Favoris/ajouterArticleFavo/" + id; // ajout aux favoris
-
-    $http.get(routeApi)
-      .success(function (data) {
-          $scope.article = data;
-
-      });
-
-    $http.post(routeApi2, id).
-     success(function (data, status, headers, config) {
-         console.log('ok',data);
-    }).
-     error(function (data, status, headers, config) {
-         console.log('ko');
-     });
-}]
+   
+}] 
 );
 
 
@@ -296,11 +270,6 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
         });
     }
 
-
-
-
-
-
     var events = {
         places_changed: function (searchBox) {
             var place = searchBox.getPlaces();
@@ -326,9 +295,6 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
         }
     };
     $scope.searchbox = { template: 'searchbox.tpl.html', events: events };
-
-
-
 });
 
 // Service de Geolocalisation :
@@ -358,8 +324,8 @@ wisControllers.factory("GeolocationService", ['$q', '$window', '$rootScope', fun
     }
 }]);
 
-wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
-    function ($scope, $http, geolocation) {
+wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService', '$location',
+    function ($scope, $http, geolocation, $location) {
 
         $scope.article = {};
         $scope.placeholder = {};
@@ -420,6 +386,8 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
                 })
           .success(function (data) {
               $scope.article = data;
+              alert("Votre article \u00E0 bien \u00E9t\u00E9 ajout\u00E9");
+              $location.path('/article/'+$scope.article.id);
           })
           .error(function () {
               alert('marche pas');
@@ -428,21 +396,21 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
          }
 ]);
 
-wisControllers.controller('connectionCtrl', function ($scope, $http) {
+wisControllers.controller('connectionCtrl', function ($scope, $http, $location) {
     $scope.checkUser = function () {
         //console.log($scope.user);
         $http.post("/api/Connection/checkUser", $scope.user)
             .success(function (data) {
                 if (data == true) {
-                    alert('Authentification réussie');
+                    alert("Authentification r\u00E9ussie, vous allez \u00EAtre redirig\u00E9...");
+                    $location.path('/');
                 }
                 else {
-                    alert('Identifiants invalides');
+                    alert('Identifiants invalides...');
                 }
-
             })
             .error(function () {
-                alert('Authentification impossible');
+                alert('Authentification impossible...');
             });
     }
 });

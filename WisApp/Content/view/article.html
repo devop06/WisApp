@@ -11,13 +11,20 @@
                  <br />Auteur : {{ article.Auteur }}
                  <br/>  Tag : {{ article.Tags }}
              </p>
-           <a href="#/ajouterfavoris/{{article.id}}" ng-click="save()" class="btn btn-primary btn-fab btn-raised mdi-action-favorite-outline col-xs-9"></a>
-             <br/>
+            <div ng-if="!estFavoris">  
+                <a href="#/article/{{article.id}}" ng-click="ajoutfavo()" class="btn btn-primary btn-fab btn-raised mdi-action-favorite-outline col-xs-9"></a>
+            </div>
+
+            <div ng-if="estFavoris">
+                <a href="#/article/{{article.id}}" ng-click="retirerfavo()" class="btn btn-primary btn-fab btn-raised mdi-action-favorite col-xs-9"></a>
+            </div>
+          
+            <br/>
             <p>{{test}}</p>
            
         </div>
            
-           <img  src="{{article.Image}}" alt="image info"/>
+            <img src="{{article.Image}}" ng-hide="isNotNull()" alt="image info" />
    <div style="margin-left: 5%;margin-right: 5%; text-indent: 5%;">
               
        <p><br/>{{ article.Content }}</p>
@@ -29,13 +36,10 @@
            
             <div class="center-block">
                 <div class="btn btn-default"> <a href="#/partager/{{article.id}}" class="pull-left">Editer</a></div>
-                
-               
                 <div class="btn btn-default"> <a href="javascript:void(0)" class="pull-right">Marquer comme non lu</a></div>
-                    
             </div>
            
         </div>
- </div>
+  </div>
         
-    </div>
+</div>
