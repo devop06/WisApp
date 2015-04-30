@@ -31,5 +31,10 @@ namespace WisApp.Controllers
             return Articles().Count();
         }
 
+        public List<Article> getArticlesPagination(int id)
+        {
+            Models.Ressources.initialiseData();
+            return Models.Ressources.listArticle.GetRange(id, 2); ;
+        }
     }
 }

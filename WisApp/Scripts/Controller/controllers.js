@@ -12,18 +12,20 @@ wisControllers.controller('indexCtrl', function ($scope, $http, $log) {
                  .success(function (data) {
                      $scope.totalItems = data;
                      $scope.currentPage = 1;
-
+                     $scope.maxPerPage = 5;
                      $scope.setPage = function (pageNo) {
                          $scope.currentPage = pageNo;
                      };
 
                      $scope.pageChanged = function () {
-                         $log.log('Page changed to: ' + $scope.currentPage);
+                         alert("cooc");
                      };
 
                      $scope.bigTotalItems = 175;
                      $scope.bigCurrentPage = 1;
                  });
+   
+
 	});
 
 
