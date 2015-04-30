@@ -19,19 +19,19 @@ namespace WisApp.Controllers
         [HttpPost]
         public void ajouterArticleFavo(int id)
         {
-            HomeController h = new HomeController();
+            ArticlesController h = new ArticlesController();
             // trouve l'article selectionné dans la liste des articles présent dans la base
-            Article ArticleFavo = h.Articles().Find(x => x.id == id);
-            u.ajouterArticleFavoris(ArticleFavo.id); // ajoute un article favoris pour un utilisateur */
+            //Article ArticleFavo = h.Articles().Find(x => x.id == id);
+            //u.ajouterArticleFavoris(ArticleFavo.id); // ajoute un article favoris pour un utilisateur */
         }
 
         [HttpPost]
         public void enleverArticleFavo(int id)
         {
-            HomeController h = new HomeController();
+            ArticlesController h = new ArticlesController();
             // trouve l'article selectionné dans la liste des articles présent dans la base
-            Article ArticleFavo = h.Articles().Find(x => x.id == id);
-            u.enleverArticleFavoris(ArticleFavo.id); // ajoute un article favoris pour un utilisateur */
+            //Article ArticleFavo = h.Articles().Find(x => x.id == id);
+            //u.enleverArticleFavoris(ArticleFavo.id); // ajoute un article favoris pour un utilisateur */
         }
 
         [HttpGet]

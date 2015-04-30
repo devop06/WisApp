@@ -2,7 +2,8 @@ var wisControllers = angular.module('wisControllers',[]);
 
 wisControllers.controller('indexCtrl', function ($scope, $http, $log) {
 
-    $http.get("/api/Home/Articles")
+
+	    $http.get("/api/Articles/GetArticle/")
              .success(function (data) {
                  $scope.Articles = data;
                 
@@ -23,22 +24,74 @@ wisControllers.controller('indexCtrl', function ($scope, $http, $log) {
 
                      $scope.bigTotalItems = 175;
                      $scope.bigCurrentPage = 1;
-                 });
+	});
 	});
 
+wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService', '$location', 'HubService',
+    function ($scope, $http, geolocation, $location, HubService) {
 
-wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', '$location', function ($scope, $http, $routeParams, $location) {
+        $scope.article = {};
+        $scope.placeholder = {};
 
-    var id = $routeParams.id;
-    var routeApi = "/api/Home/getArticle/" + id;
+        $scope.placeholder.Titre = "[Quel titre pour votre article ?]";
+        $scope.placeholder.Content = "[Ici tapez le corps de votre article]";
+        $scope.placeholder.Tags = "ex : Tag1,Tag2,Tag3";
 
-    $http.get(routeApi)
-          .success(function (data) {
-              $scope.article = data;
+        $scope.position = null;
+        $scope.message = "Nous desirons connaitre votre position ...";
 
-          });
-    $scope.toto = function () {
-        $http.post("/api/values/PartageAjout",
+        geolocation().then(function (position) {
+            $scope.article.Latitude = position.coords.latitude;
+            $scope.article.Longitude = position.coords.longitude;
+            $scope.message = "Position recuperer !";
+        }, function (reason) {
+            $scope.message = "Votre position ne peut être determinee."
+        });
+
+        // Reference the proxy for the hub.  
+        HubService.article.client.onArticleChanged["CreerCtrl"] = function (article) {
+            //alert(article.Titre);
+            //if (document.location.href == "http://localhost:52454/Content/index.html#/" || document.location.href == "http://localhost:52454/content/#/") {
+            window.location.reload();
+            //}
+        };
+
+
+
+        $scope.submit = function () {
+
+            //HubService.invoke('refresh_server');
+            // Article :
+            /*  id => C#
+                date => C#
+                heure => C#
+                image => ...
+                auteur => 
+            */
+            var titre = $scope.article.Titre;
+            var content = $scope.article.Content;
+            var description = content.substr(0, 50) + " ...";
+            var tags = $scope.article.Tags;
+            var auteur = "W.I.S";
+            var image = "W.I.S";
+            var visibilite = $scope.article.Visibilite;
+
+            var latitude = $scope.article.Latitude;
+            var longitude = $scope.article.Longitude;
+
+            $scope.article = {
+                "Titre": titre,
+                "Content": content,
+                "Description": description,
+                "Tags": tags,
+                "Auteur": auteur,
+                "Image": image,
+                "Latitude": latitude,
+                "Longitude": longitude,
+                "Visibilite": visibilite
+            };
+
+            $http.post("/api/values/PartageAjout",
                 JSON.stringify($scope.article),
                 {
                     headers: {
@@ -47,7 +100,39 @@ wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', '$
                 })
           .success(function (data) {
               $scope.article = data;
+              //alert('Refresh');
+              HubService.article.server.notifyArticle(data);
+              alert("Votre article \u00E0 bien \u00E9t\u00E9 ajout\u00E9");
               $location.path('/article/' + $scope.article.id);
+          })
+          .error(function () {
+              alert('marche pas');
+          });
+        }
+    }
+]);
+    
+
+wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+
+    var id = $routeParams.id;
+    var routeApi = "/api/Articles/GetArticle/" + id;
+
+    $http.get(routeApi)
+          .success(function (data) {
+              $scope.article = data;
+
+          });
+    $scope.toto = function () {
+        $http.post("/api/Articles/PostArticle",
+                JSON.stringify($scope.article),
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+          .success(function (data) {
+              $scope.article = data;
           })
           .error(function () {
               alert('marche pas');
@@ -56,10 +141,11 @@ wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', '$
     
 }]);
 
-wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', '$route', function ($scope, $http, $routeParams, $route) {
-   
+
+wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+
     var id = $routeParams.id;
-    var routeApi = "/api/Home/getArticle/" + id;
+    var routeApi = "/api/Articles/GetArticle/" + id;
     var routeApi2 = "/api/Favoris/estFavoris/" + id;
     var routeApi3 = "/api/Favoris/ajouterArticleFavo/" + id;
     var routeApi4 = "/api/Favoris/enleverArticleFavo/" + id;
@@ -86,7 +172,7 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', '$r
 
     $scope.ajoutfavo = function () {
         $http.post(routeApi3, id).
-             success(function (data, status, headers, config) {
+             success(function (data, status, headers, config) {  
                  $route.reload();
              });
     }
@@ -99,7 +185,7 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', '$r
     }
 
    
-}] 
+}]
 );
 
 
@@ -117,7 +203,7 @@ wisControllers.controller('compteCtrl', ['$scope', function ($scope) {
 
     
 
-
+  
 }]);
 
 
@@ -176,12 +262,12 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope,
 wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http) {
     var nombreMarker;
     var Articles;
-    $http.get("/api/Home/Articles")
+    $http.get("/api/Articles/GetArticle/")
              .success(function (data) {
                  Articles = data;
              });
 
-    var routeApi2 = "/api/Home/getNombreArticle";
+    var routeApi2 = "/api/Articles/getNombreArticle";
 
     $http.get(routeApi2)
           .success(function (data) {
@@ -325,95 +411,12 @@ wisControllers.factory("GeolocationService", ['$q', '$window', '$rootScope', fun
     }
 }]);
 
-wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService', '$location', 'HubService',
-    function ($scope, $http, geolocation, $location, HubService) {
 
-        $scope.article = {};
-        $scope.placeholder = {};
-        
-        $scope.placeholder.Titre = "[Quel titre pour votre article ?]";
-        $scope.placeholder.Content = "[Ici tapez le corps de votre article]";
-        $scope.placeholder.Tags = "ex : Tag1,Tag2,Tag3";
-        
-        $scope.position = null;
-        $scope.message = "Nous desirons connaitre votre position ...";
-
-        geolocation().then(function (position) {
-            $scope.article.Latitude = position.coords.latitude;
-            $scope.article.Longitude = position.coords.longitude;
-            $scope.message = "Position recuperer !";
-        }, function (reason) {
-            $scope.message = "Votre position ne peut être determinee."
-        });
-
-        // Reference the proxy for the hub.  
-        HubService.article.client.onArticleChanged["CreerCtrl"] = function (article) {
-            //alert(article.Titre);
-            //if (document.location.href == "http://localhost:52454/Content/index.html#/" || document.location.href == "http://localhost:52454/content/#/") {
-                window.location.reload();
-            //}
-        };
-
-
-
-        $scope.submit = function () {
-            
-            //HubService.invoke('refresh_server');
-                // Article :
-                /*  id => C#
-                    date => C#
-                    heure => C#
-                    image => ...
-                    auteur => 
-                */
-            var titre = $scope.article.Titre;
-            var content = $scope.article.Content;
-            var description = content.substr(0,50) + " ...";
-            var tags = $scope.article.Tags;
-            var auteur = "W.I.S";
-            var image = "W.I.S";
-            var visibilite = $scope.article.Visibilite;
-
-            var latitude = $scope.article.Latitude;
-            var longitude = $scope.article.Longitude;
-
-            $scope.article = {
-                "Titre": titre,
-                "Content": content,
-                "Description":description,
-                "Tags": tags,
-                "Auteur": auteur,
-                "Image": image,
-                "Latitude": latitude,
-                "Longitude": longitude,
-                "Visibilite": visibilite
-            };
-
-            $http.post("/api/values/PartageAjout",
-                JSON.stringify($scope.article),
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-          .success(function (data) {
-              $scope.article = data;
-              //alert('Refresh');
-              HubService.article.server.notifyArticle(data);
-              alert("Votre article \u00E0 bien \u00E9t\u00E9 ajout\u00E9");
-              $location.path('/article/'+$scope.article.id);
-          })
-          .error(function () {
-              alert('marche pas');
-          });
-            }
-         }
-]);
 
 wisControllers.controller('connectionCtrl', function ($scope, $http, $location) {
     $scope.checkUser = function () {
         //console.log($scope.user);
-        $http.post("/api/Connection/checkUser", $scope.user)
+        $http.post("/api/Users/connectUser", $scope.user)
             .success(function (data) {
                 if (data == true) {
                     alert("Authentification r\u00E9ussie, vous allez \u00EAtre redirig\u00E9...");
@@ -433,11 +436,21 @@ wisControllers.controller('inscriptionCtrl', function ($scope, $http) {
     $scope.checkInscription = function () {
         var ourLocation = document.URL;
         console.log("Currently at " + ourLocation);
-        //console.log($scope.user);
+        console.log($scope.user);
         
-        $http.post("/api/Inscription/checkInscription", $scope.user)
+        /*$http.post("/api/Articles/PostArticle",
+                JSON.stringify($scope.article),
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+          .success(function (data) {
+              $scope.article = data;
+          })*/
+        $http.post("/api/Users/PostUser", $scope.user)
             .success(function (data) {
-                alert(data);
+                alert("Utilisateur " + data.nom + " inscrit en " + data.id + "eme position.");
             })
             .error(function () {
                 alert('Inscription impossible pour le moment');

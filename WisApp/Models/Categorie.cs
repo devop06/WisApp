@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using WisApp.Controllers;
 
-namespace ExCategorie.Controllers
+namespace WisApp.Models
 {
     public class Categorie
     {
@@ -12,7 +12,7 @@ namespace ExCategorie.Controllers
         {
 
         }
-
+        public int id { get; set; }
         public string Name { get; set; }
         public List<Article> Articles { get; set; }
     }
