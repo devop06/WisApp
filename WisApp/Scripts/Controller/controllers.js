@@ -9,7 +9,7 @@ wisControllers.controller('indexCtrl', function ($scope, $http, $log) {
                 
              });
 
-    $http.get("/api/Home/getNombreArticle")
+    $http.get("/api/Articles/getNombreArticle")
                  .success(function (data) {
                      $scope.totalItems = data;
                      $scope.currentPage = 1;
