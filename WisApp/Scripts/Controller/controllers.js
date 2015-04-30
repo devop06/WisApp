@@ -1,28 +1,29 @@
 var wisControllers = angular.module('wisControllers',[]);
 
-wisControllers.controller('indexCtrl',
-	function ($scope, $http) {
+wisControllers.controller('indexCtrl', function ($scope, $http, $log) {
 
-
-	    $http.get("/api/Home/Articles")
+    $http.get("/api/Home/Articles")
              .success(function (data) {
                  $scope.Articles = data;
-                 /*$scope.Articles.id = data.id;
-                 $scope.Articles.Titre = data.Titre;
-
-                 $scope.Articles.Date = data.Date;
-                 $scope.Articles.Heure = data.Heure;
-                 $scope.Articles.Image = data.Image;
-                 $scope.Articles.Content = data.Content;
-                 $scope.Articles.Description = data.Description;
-                 $scope.Articles.Auteur = data.Auteur;
-                 $scope.Articles.Tags = data.Tags;
-                 $scope.Articles.Source = data.Source;
-                 $scope.Articles.Latitude = data.Latitude;
-                 $scope.Articles.Longitude = data.Longitude;
-                 $scope.Articles.Visibilite = data.Visibilite;*/
-
+                
              });
+
+    $http.get("/api/Home/getNombreArticle")
+                 .success(function (data) {
+                     $scope.totalItems = data;
+                     $scope.currentPage = 1;
+
+                     $scope.setPage = function (pageNo) {
+                         $scope.currentPage = pageNo;
+                     };
+
+                     $scope.pageChanged = function () {
+                         $log.log('Page changed to: ' + $scope.currentPage);
+                     };
+
+                     $scope.bigTotalItems = 175;
+                     $scope.bigCurrentPage = 1;
+                 });
 	});
 
 

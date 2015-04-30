@@ -1,7 +1,8 @@
 var wisApp = angular.module('wisApp', [
   'ngRoute',
   'wisControllers', 
-  'uiGmapgoogle-maps'
+  'uiGmapgoogle-maps',
+  
 ]);
 
 wisApp.config(['$routeProvider',
