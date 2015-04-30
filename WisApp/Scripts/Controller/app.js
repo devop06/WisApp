@@ -2,7 +2,7 @@ var wisApp = angular.module('wisApp', [
   'ngRoute',
   'wisControllers', 
   'uiGmapgoogle-maps',
-  
+  'ui.bootstrap'
 ]);
 
 wisApp.config(['$routeProvider',

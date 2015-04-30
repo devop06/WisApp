@@ -13,18 +13,20 @@ wisControllers.controller('indexCtrl', function ($scope, $http, $log) {
                  .success(function (data) {
                      $scope.totalItems = data;
                      $scope.currentPage = 1;
-
+                     $scope.maxPerPage = 5;
                      $scope.setPage = function (pageNo) {
                          $scope.currentPage = pageNo;
                      };
 
                      $scope.pageChanged = function () {
-                         $log.log('Page changed to: ' + $scope.currentPage);
+                         alert("cooc");
                      };
 
                      $scope.bigTotalItems = 175;
                      $scope.bigCurrentPage = 1;
-	});
+                 });
+   
+
 	});
 
 wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService', '$location', 'HubService',
@@ -141,7 +143,7 @@ wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', fu
     
 }]);
 
-
+   
 wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
 
     var id = $routeParams.id;
@@ -172,7 +174,7 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', fun
 
     $scope.ajoutfavo = function () {
         $http.post(routeApi3, id).
-             success(function (data, status, headers, config) {  
+             success(function (data, status, headers, config) {
                  $route.reload();
              });
     }
@@ -185,7 +187,7 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', fun
     }
 
    
-}]
+}] 
 );
 
 
@@ -203,7 +205,7 @@ wisControllers.controller('compteCtrl', ['$scope', function ($scope) {
 
     
 
-  
+
 }]);
 
 

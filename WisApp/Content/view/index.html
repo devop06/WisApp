@@ -1,30 +1,18 @@
-
-<div class="jumbotron col-md-6 col-md-offset-3" ng-repeat="article in Articles">
+<div>
+<div class="jumbotron col-md-6 col-md-offset-3" ng-repeat="article in Articles | limitTo: maxPerPage">
     <p class="col-sm-8"><b>{{article.Titre}}</b></p>
     <h6 class="col-sm-4">Publi&eacute; &agrave; : {{article.Heure}}</h6>
     <h4 class="col-sm-12">{{article.Description}}</h4>
     <a class="col-sm-offset-10 col-xs-offset-8" href="#/article/{{article.id}}">Voir l'article</a>
+   
 </div>
 
-<div >
-
-    <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination>
-    <pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
-    <pagination direction-links="false" boundary-links="true" total-items="totalItems" ng-model="currentPage"></pagination>
-    <pagination direction-links="false" total-items="totalItems" ng-model="currentPage" num-pages="smallnumPages"></pagination>
-    <pre>The selected page no: {{currentPage}}</pre>
-    <button class="btn btn-info" ng-click="setPage(3)">Set current page to: 3</button>
-
-    <hr />
-    <h4>Pager</h4>
-    <pager total-items="totalItems" ng-model="currentPage"></pager>
-
-    <hr />
-    <h4>Limit the maximum visible buttons</h4>
-    <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true"></pagination>
-    <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
-    <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre>
+<div class="row">
+    <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" items-per-page="maxPerPage"></pagination>  
 </div>
+
+</div>    
+
 <div class="disparition" style="position: fixed; bottom: 0px;">
     <div class="container">
         <p class="text-muted"></p><a href="#/creer" title="Cr&eacute;er article" class="btn btn-primary btn-fab btn-raised mdi-content-block"></a>
