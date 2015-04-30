@@ -357,7 +357,7 @@ wisControllers.factory("GeolocationService", ['$q', '$window', '$rootScope', fun
 wisControllers.controller('connectionCtrl', function ($scope, $http) {
     $scope.checkUser = function () {
         //console.log($scope.user);
-        $http.post("/api/Connection/checkUser", $scope.user)
+        $http.post("/api/Users/connectUser", $scope.user)
             .success(function (data) {
                 if (data == true) {
                     alert('Authentification réussie');
@@ -365,7 +365,6 @@ wisControllers.controller('connectionCtrl', function ($scope, $http) {
                 else {
                     alert('Identifiants invalides');
                 }
-
             })
             .error(function () {
                 alert('Authentification impossible');
@@ -377,11 +376,21 @@ wisControllers.controller('inscriptionCtrl', function ($scope, $http) {
     $scope.checkInscription = function () {
         var ourLocation = document.URL;
         console.log("Currently at " + ourLocation);
-        //console.log($scope.user);
-        
-        $http.post("/api/Inscription/checkInscription", $scope.user)
+        console.log($scope.user);
+
+        /*$http.post("/api/Articles/PostArticle",
+                JSON.stringify($scope.article),
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+          .success(function (data) {
+              $scope.article = data;
+          })*/
+        $http.post("/api/Users/PostUser", $scope.user)
             .success(function (data) {
-                alert(data);
+                alert("Utilisateur " + data.nom + " inscrit en " + data.id + "eme position.");
             })
             .error(function () {
                 alert('Inscription impossible pour le moment');
