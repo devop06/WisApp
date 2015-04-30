@@ -43,6 +43,10 @@ wisApp.config(['$routeProvider',
 	      templateUrl: 'view/creer.html',
 	      controller: 'creerCtrl'
 	  }).
+      when('/compte', {
+          templateUrl: 'view/compte.html',
+          controller: 'compteCtrl'
+      }).
 	    
 	  
       otherwise({

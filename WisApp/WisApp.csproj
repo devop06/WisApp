@@ -100,6 +100,7 @@
     <Content Include="Content\view\categorie.html" />
     <Content Include="Content\view\connection.html" />
     <Content Include="Content\view\creer.html" />
+    <Content Include="Content\view\compte.html" />
     <Content Include="Content\view\inscription.html" />
     <Content Include="Content\view\intro.html" />
     <Content Include="Content\view\index.html" />

@@ -1,50 +1,15 @@
 
-
-<style>
-    ol {
-        list-style-type: none;
-    }
-
-        ol ol {
-            border-top: solid 1px #555;
-        }
-
-        ol li li {
-            background-color: #eeefe0;
-            color: #000;
-            border: solid 1px #555;
-            border-top: none;
-        }
-
-    .Day {
-        width: 100%;
-        padding: 5px 0px;
-        font-weight: bold;
-        color: #f16025;
-    }
-
-    .Time {
-        padding: 0 20px;
-        background-color: #97be3d;
-        border-right: solid 1px #555;
-        color: #fff;
-    }
-</style>
-
-
-
-<div class="jumbotron col-md-6 col-md-offset-3">
-
-    <ol>
-        <li>
-            <span class="Day">Lundi</span>
-            <ol>
-                <li ng-repeat="article in Articles">
-                    <span class="Time">{{article.Heure}}</span>
-                    <span><a href="#/article/{{article.id}}">{{article.Titre}}</a></span>
-                    
-                </li>
-            </ol>
-        </li>
-    </ol>
+<div class="jumbotron col-md-6 col-md-offset-3" ng-repeat="article in Articles">
+    <p class="col-sm-8"><b>{{article.Titre}}</b></p>
+    <h6 class="col-sm-4">Publi&eacute; &agrave; : {{article.Heure}}</h6>
+    <h4 class="col-sm-12">{{article.Description}}</h4>
+    <a style="margin-left: 90%;"href="#/article/{{article.id}}">Voir l'article</a>
 </div>
+<div class="disparition" style="position: fixed; bottom: 0px;">
+    <div class="container">
+        <p class="text-muted"></p><a href="#/creer" title="Cr&eacute;er article" class="btn btn-primary btn-fab btn-raised mdi-content-block"></a>
+        
+    </div>
+</div>
+        
+

@@ -7,6 +7,21 @@ wisControllers.controller('indexCtrl',
 	    $http.get("/api/Home/Articles")
              .success(function (data) {
                  $scope.Articles = data;
+                 /*$scope.Articles.id = data.id;
+                 $scope.Articles.Titre = data.Titre;
+
+                 $scope.Articles.Date = data.Date;
+                 $scope.Articles.Heure = data.Heure;
+                 $scope.Articles.Image = data.Image;
+                 $scope.Articles.Content = data.Content;
+                 $scope.Articles.Description = data.Description;
+                 $scope.Articles.Auteur = data.Auteur;
+                 $scope.Articles.Tags = data.Tags;
+                 $scope.Articles.Source = data.Source;
+                 $scope.Articles.Latitude = data.Latitude;
+                 $scope.Articles.Longitude = data.Longitude;
+                 $scope.Articles.Visibilite = data.Visibilite;*/
+
              });
 	});
 
@@ -111,6 +126,24 @@ wisControllers.controller('ajouterfavoris', ['$scope', '$http', '$routeParams', 
      });
 }]
 );
+
+
+wisControllers.controller('compteCtrl', ['$scope', function ($scope) {
+    $scope.myVar = false;
+    $scope.toggle = function () {
+        $scope.myVar = !$scope.myVar;
+    };
+    $scope.checkModifCompte = function () {
+        
+       alert('modification');
+           
+    };
+    
+
+    
+
+
+}]);
 
 
 wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope, $http) {
