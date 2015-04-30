@@ -17,7 +17,7 @@ namespace WisApp.Controllers
     {
         private Wis2Context db = new Wis2Context();
 
-        // GET: api/Articles/Articles/
+        // GET: api/Articles/GetArticle/
         public IQueryable<Article> GetArticle()
         {
             return db.Article;
