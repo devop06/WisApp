@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNet.SignalR;
 using WisApp.Controllers;
+using WisApp.Models;
 
 namespace WisApp.Hubs
 {
