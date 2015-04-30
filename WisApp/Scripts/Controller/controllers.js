@@ -324,8 +324,8 @@ wisControllers.factory("GeolocationService", ['$q', '$window', '$rootScope', fun
     }
 }]);
 
-wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService', '$location',
-    function ($scope, $http, geolocation, $location) {
+wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService', '$location', 'HubService',
+    function ($scope, $http, geolocation, $location, HubService) {
 
         $scope.article = {};
         $scope.placeholder = {};
@@ -345,8 +345,19 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
             $scope.message = "Votre position ne peut être determinee."
         });
 
-        $scope.submit = function () {
+        // Reference the proxy for the hub.  
+        HubService.article.client.onArticleChanged["CreerCtrl"] = function (article) {
+            //alert(article.Titre);
+            //if (document.location.href == "http://localhost:52454/Content/index.html#/" || document.location.href == "http://localhost:52454/content/#/") {
+                window.location.reload();
+            //}
+        };
 
+
+
+        $scope.submit = function () {
+            
+            //HubService.invoke('refresh_server');
                 // Article :
                 /*  id => C#
                     date => C#
@@ -386,6 +397,8 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
                 })
           .success(function (data) {
               $scope.article = data;
+              //alert('Refresh');
+              HubService.article.server.notifyArticle(data);
               alert("Votre article \u00E0 bien \u00E9t\u00E9 ajout\u00E9");
               $location.path('/article/'+$scope.article.id);
           })
