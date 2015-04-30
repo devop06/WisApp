@@ -8,9 +8,9 @@ using WisApp.DAL;
 
 namespace WisApp.DAL
 {
-    public class WisInitializer : System.Data.Entity. DropCreateDatabaseIfModelChanges<WisContext>
+    public class WisInitializer : System.Data.Entity.DropCreateDatabaseAlways<Wis2Context>
     {
-        protected override void Seed(WisContext context)
+        protected override void Seed(Wis2Context context)
         {
             var users = new List<User>
             {

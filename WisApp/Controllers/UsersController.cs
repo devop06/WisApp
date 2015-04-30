@@ -15,7 +15,7 @@ namespace WisApp.Controllers
 {
     public class UsersController : ApiController
     {
-        private WisContext db = new WisContext();
+        private Wis2Context db = new Wis2Context();
 
         // GET: api/Users
         public IQueryable<User> GetUser()

@@ -5,11 +5,11 @@ using WisApp.Controllers;
 
 namespace WisApp.DAL
 {
-    public class WisContext : DbContext
+    public class Wis2Context : DbContext
     {
 
-        public WisContext()
-            : base("WisContext")
+        public Wis2Context()
+            : base("Wis2Context")
         {
         }
 

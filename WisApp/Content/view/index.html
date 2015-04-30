@@ -1,5 +1,5 @@
 <div>
-<div class="jumbotron col-md-6 col-md-offset-3" ng-repeat="article in Articles | limitTo: maxPerPage">
+<div class="jumbotron col-md-6 col-md-offset-3" ng-repeat="article in Articles "><!-- | limitTo: maxPerPage -->
     <p class="col-sm-8"><b>{{article.Titre}}</b></p>
     <h6 class="col-sm-4">Publi&eacute; &agrave; : {{article.Heure}}</h6>
     <h4 class="col-sm-12">{{article.Description}}</h4>
