@@ -18,6 +18,7 @@ namespace WisApp.Controllers
          * Ajouter un article aux favoris pour un utilisateur
          * (voir classe Users)
          **/
+        [Authorize]
         [HttpPost]
         public void ajouterArticleFavo(int id)
         {
@@ -28,6 +29,7 @@ namespace WisApp.Controllers
             u.ajouterArticleFavoris(ArticleFavo.id); // ajoute un article favoris pour un utilisateur */
         }
 
+        [Authorize]
         [HttpPost]
         public void enleverArticleFavo(int id)
         {

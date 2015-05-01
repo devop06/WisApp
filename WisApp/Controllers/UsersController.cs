@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Security;
 using System.Web.Http.Description;
 using WisApp.DAL;
 using WisApp.Models;
@@ -17,17 +18,34 @@ namespace WisApp.Controllers
     {
         private Wis2Context db = new Wis2Context();
 
-        // GET: api/Users
-        public IQueryable<User> GetUser()
+
+
+        [HttpGet]
+        public int getIDCurrentUser()
         {
-            return db.User;
+            int id;
+            try
+            {
+                id = int.Parse(this.RequestContext.Principal.Identity.Name);
+            }
+            catch (FormatException e) { return 0; }
+            return id;
         }
 
+
+        // GET: api/Users
+            /*
+        public IQueryable<User> GetUser()
+        {
+
+            return db.User;
+        }
+            */
         // GET: api/Users/5
         [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(int id)
-        {
-            User user = db.User.Find(id);
+        public IHttpActionResult GetUser()
+        {          
+            User user = db.User.Find(getIDCurrentUser());
             if (user == null)
             {
                 return NotFound();
@@ -93,10 +111,18 @@ namespace WisApp.Controllers
             foreach(User u in db.User)
                 if (user.login == u.login && user.password == u.password)
                 {
+                    FormsAuthentication.SetAuthCookie(u.id.ToString(), true);
                     return true;
                 }
 
             return false;
+        }
+
+        [Authorize]
+        [HttpGet]
+        public void DisconnectUser()
+        {
+            FormsAuthentication.SignOut();
         }
     }
 }

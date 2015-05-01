@@ -96,7 +96,8 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
               $location.path('/article/' + $scope.article.id);
           })
           .error(function () {
-              alert('marche pas');
+              alert('Impossible de publier sans se connecter !');
+              $location.path('/connection');
           });
         }
 
@@ -123,7 +124,7 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
 ]);
     
 
-wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+wisControllers.controller('partagerCtrl', ['$scope', '$location', '$http', '$routeParams', function ($scope, $location, $http, $routeParams) {
 
     var id = $routeParams.id;
     var routeApi = "/api/Articles/GetArticle/" + id;
@@ -145,14 +146,15 @@ wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', fu
               $scope.article = data;
           })
           .error(function () {
-              alert('marche pas');
+              alert('Impossible de publier sans se connecter !');
+              $location.path('/connection');
           });
     }
     
 }]);
 
    
-wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams','$route', function ($scope, $http, $routeParams,$route) {
+wisControllers.controller('articleCtrl', ['$scope', '$location', '$http', '$routeParams', '$route', function ($scope, $location, $http, $routeParams, $route) {
 
     var id = $routeParams.id;
     var routeApi = "/api/Articles/GetArticle/" + id;
@@ -181,17 +183,28 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams','$ro
          });
 
     $scope.ajoutfavo = function () {
-        $http.post(routeApi3, id).
-             success(function (data, status, headers, config) {
+        $http.post(routeApi3, id)
+             .success(function (data, status, headers, config) {
                  $route.reload();
-             });
+             })
+        .error(function () {
+            alert("Impossible vous n'etes pas connecte !")
+            $location.path('/connection');
+
+        });
+        
     }
 
     $scope.retirerfavo = function () {
-        $http.post(routeApi4, id).
-             success(function (data, status, headers, config) {
+        $http.post(routeApi4, id)
+             .success(function (data, status, headers, config) {
                  $route.reload();
-             });
+             })
+        .error(function () {
+            alert("Impossible vous n'etes pas connecte !")
+            $location.path('/connection');
+
+        });
     }
 
    
@@ -199,7 +212,26 @@ wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams','$ro
 );
 
 
-wisControllers.controller('compteCtrl', ['$scope', function ($scope) {
+wisControllers.controller('compteCtrl', ['$scope', '$location', '$http', function ($scope, $location, $http) {
+    $scope.disconnect = function () {
+        $http.get("/api/Users/DisconnectUser")
+            .success(function () {
+                alert("vous etes bien deconnecte !")
+                $location.path('/connection');
+            })
+        .error(function () {
+            alert("bug...");
+        });
+    }
+    $http.get("/api/Users/GetUser")
+            .success(function (data) {
+                $scope.compte = data;
+               
+            })
+            .error(function () {
+                alert('Vous devez etre connecter...');
+                $location.path('/connection');
+            });
     $scope.myVar = false;
     $scope.toggle = function () {
         $scope.myVar = !$scope.myVar;
@@ -208,6 +240,8 @@ wisControllers.controller('compteCtrl', ['$scope', function ($scope) {
        alert('modification');
            
     };
+    
+
 }]);
 
 
