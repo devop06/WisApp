@@ -18,10 +18,6 @@ wisControllers.controller('indexCtrl', function ($scope, $http, $log) {
                          $scope.currentPage = pageNo;
                      };
 
-                     $scope.pageChanged = function () {
-                         alert("cooc");
-                     };
-
                      $scope.bigTotalItems = 175;
                      $scope.bigCurrentPage = 1;
                  });
@@ -144,7 +140,7 @@ wisControllers.controller('partagerCtrl', ['$scope', '$http', '$routeParams', fu
 }]);
 
    
-wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+wisControllers.controller('articleCtrl', ['$scope', '$http', '$routeParams','$route', function ($scope, $http, $routeParams,$route) {
 
     var id = $routeParams.id;
     var routeApi = "/api/Articles/GetArticle/" + id;
@@ -201,11 +197,6 @@ wisControllers.controller('compteCtrl', ['$scope', function ($scope) {
        alert('modification');
            
     };
-    
-
-    
-
-
 }]);
 
 

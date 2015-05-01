@@ -5,11 +5,13 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WisApp.Models;
+using WisApp.DAL;
 
 namespace WisApp.Controllers
 {
     public class FavorisController : ApiController
     {
+        private Wis2Context db = new Wis2Context();
         static User u = new User();
 
         /**
@@ -20,9 +22,10 @@ namespace WisApp.Controllers
         public void ajouterArticleFavo(int id)
         {
             ArticlesController h = new ArticlesController();
+           
             // trouve l'article selectionné dans la liste des articles présent dans la base
-            //Article ArticleFavo = h.Articles().Find(x => x.id == id);
-            //u.ajouterArticleFavoris(ArticleFavo.id); // ajoute un article favoris pour un utilisateur */
+            Article ArticleFavo = db.Article.Find(id);
+            u.ajouterArticleFavoris(ArticleFavo.id); // ajoute un article favoris pour un utilisateur */
         }
 
         [HttpPost]
@@ -30,8 +33,8 @@ namespace WisApp.Controllers
         {
             ArticlesController h = new ArticlesController();
             // trouve l'article selectionné dans la liste des articles présent dans la base
-            //Article ArticleFavo = h.Articles().Find(x => x.id == id);
-            //u.enleverArticleFavoris(ArticleFavo.id); // ajoute un article favoris pour un utilisateur */
+            Article ArticleFavo = db.Article.Find(id);
+            u.enleverArticleFavoris(ArticleFavo.id); // ajoute un article favoris pour un utilisateur */
         }
 
         [HttpGet]
