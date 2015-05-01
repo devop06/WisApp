@@ -105,23 +105,19 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
             var exist = false;
             var id = 0;
             for (var i = 0; i < $scope.article.tabTags.length; i++) {
-                if ($scope.article.tabTags[i] === tag) {
+                if ($scope.article.tabTags[i] == tag.Name) {
                     exist = true;
                     id = i;
                 }
             }
-
             if (exist === false) {
                 //Si existe pas alors ...
                 $scope.article.tabTags.push(tag.Name);
-                if ($scope.article.tabTags.length > 1) {
-                    $scope.article.Tags += ",";
-                }
-                $scope.article.Tags += $scope.article.tabTags[i];
             } else {
                 //...sinon enlever du tableau
                 $scope.article.tabTags.splice(id, 1);
             }
+            $scope.article.Tags = $scope.article.tabTags.join(',');
         }
     }
 ]);
