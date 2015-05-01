@@ -5,7 +5,7 @@
 
 <div ng-controller="compteCtrl" class="jumbotron col-md-6 col-md-offset-3">
     <div class="row">
-        
+        <button ng-hide="myVar" ng-click="disconnect()" class="btn btn-danger">Deconnexion</button>
             <div ng-hide="myVar">
                 <h2 class='col-sm-7'>R&eacute;capitulatif du compte</h2>
                 <div class='col-sm-12'>
@@ -15,8 +15,8 @@
                     <br /><br />
 
                     <p class="col-sm-12">
-                        Email : {{compte.mail}}
-                        <br />Nom d'utilisateur : {{compte.name}}
+                        Email : {{compte.login}}
+                        <br />Nom d'utilisateur : {{compte.nom}}
                     </p>
 
                 </div><br />
@@ -64,11 +64,7 @@
             <button ng-hide="myVar" ng-click="toggle()" class="btn btn-primary">Modifier</button>
         </div>
 
-            <script type="text/javascript">
-                $(function () {
-                    $('#datetimepicker4').datetimepicker();
-                });
-            </script>
+            
         </div>
 </div>
 
