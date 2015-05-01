@@ -28,8 +28,15 @@ wisControllers.controller('indexCtrl', function ($scope, $http, $log) {
 wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService', '$location', 'HubService',
     function ($scope, $http, geolocation, $location, HubService) {
 
+        $http.get('/api/Categorie/Categorie').success(function (data) {
+            $scope.categories = data;
+        });
+
         $scope.article = {};
         $scope.placeholder = {};
+        $scope.article.tabTags = [];
+
+        $scope.article.Tags = "";
 
         $scope.placeholder.Titre = "[Quel titre pour votre article ?]";
         $scope.placeholder.Content = "[Ici tapez le corps de votre article]";
@@ -106,6 +113,30 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
           .error(function () {
               alert('marche pas');
           });
+        }
+
+        $scope.addTag = function (tag) {
+            //Recherche dans le tableau
+            var exist = false;
+            var id = 0;
+            for (var i = 0; i < $scope.article.tabTags.length; i++) {
+                if ($scope.article.tabTags[i] === tag) {
+                    exist = true;
+                    id = i;
+                }
+            }
+
+            if (exist === false) {
+                //Si existe pas alors ...
+                $scope.article.tabTags.push(tag.Name);
+                if ($scope.article.tabTags.length > 1) {
+                    $scope.article.Tags += ",";
+                }
+                $scope.article.Tags += $scope.article.tabTags[i];
+            } else {
+                //...sinon enlever du tableau
+                $scope.article.tabTags.splice(id, 1);
+            }
         }
     }
 ]);
