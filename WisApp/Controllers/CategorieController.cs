@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using WisApp.Controllers;
 using WisApp.Models;
+
 namespace ExCategorie.Controllers
 {
     public class CategorieController : ApiController
@@ -14,10 +15,56 @@ namespace ExCategorie.Controllers
         public List<Categorie> Categorie()
         {
             List<Categorie> resultat = new List<Categorie>();
-            List<Article> article = new List<Article>();
-
-            var unArticle = new Article();
+            List<Article> article;/* = new List<Article>();*/
             var uneCategorie = new Categorie();
+            uneCategorie.Name = "Politique";
+            resultat.Add(uneCategorie);
+            uneCategorie = new Categorie();
+            uneCategorie.Name = "Sport";
+            resultat.Add(uneCategorie);
+            uneCategorie = new Categorie();
+            uneCategorie.Name = "Science";
+            resultat.Add(uneCategorie);
+            uneCategorie = new Categorie();
+            uneCategorie.Name = "Technologie";
+            resultat.Add(uneCategorie);
+            uneCategorie = new Categorie();
+            uneCategorie.Name = "Art";
+            resultat.Add(uneCategorie);
+
+            List<Article> articles = new List<Article>();/* = HomeController.Articles();*/
+            Article art = new Article();
+            art.Titre = "Tennis";
+            art.Categorie = "Sport";
+            articles.Add(art);
+            art = new Article();
+            art.Titre = "Football";
+            art.Categorie = "Sport";
+            articles.Add(art);
+            art = new Article();
+            art.Titre = "Parti de gauche";
+            art.Categorie = "Politique";
+            articles.Add(art);
+
+            for (int i = 0; i < resultat.Count(); i++) //pour le nb de categories
+            {
+                article = new List<Article>();
+                for (int j = 0; j < articles.Count(); j++)// pour le nb d'articles
+                {
+                    if (resultat[i].Name == articles[j].Categorie)
+                    {
+                        if (article.Count() < 3) { 
+                            article.Add(articles[j]);
+                        }
+                    }
+                }
+                resultat[i].Articles = article;
+                article = null;
+            }
+
+            return resultat;
+
+            /*var unArticle = new Article();
 
             unArticle.Titre = "Parti de gauche";
             article.Add(unArticle);
@@ -184,7 +231,7 @@ namespace ExCategorie.Controllers
             uneCategorie.Articles = article;
             resultat.Add(uneCategorie);
 
-            return resultat;
+            return resultat;*/
 
         }
     }

@@ -47,10 +47,5 @@ namespace WisApp.Models
         {
             this.listeIdArticleFavo.Remove(id);
         }
-
-        public void addCategories(List<Categorie> categories)
-        {
-            this.categories = categories;
-        }
     }
 }

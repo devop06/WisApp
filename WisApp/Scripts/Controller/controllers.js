@@ -251,9 +251,9 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope,
         $scope.categories = data;
     });
 
-    $http.get('/api/Categorie/OtherCategorie').success(function (data) {
-        $scope.autres = data;
-    });
+    /*$http.get('/api/User/User/categories').success(function (data) {
+        $scope.categoriesSelectionnees = data;
+    });*/
 
     $scope.categoriesSelectionnees = [];
 
@@ -279,10 +279,8 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope,
 
     // Ajouter les catégories séléctionnées à l'utilisateur
     $scope.validerCategorie = function () {
-        console.log($scope.categoriesSelectionnees);
-        $http.post('/api/Categorie/addCategories', $scope.categoriesSelectionnees)
+        $http.post('/api/Users/addCategories', $scope.categoriesSelectionnees)
             .success(function (data) {
-                //alert(data);
                 alert("Ajout réussi");
             })
             .error(function () {
