@@ -19,7 +19,7 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
 
         $scope.article = {};
         $scope.placeholder = {};
-        $scope.article.tabTags = [];
+        $scope.tabTags = [];
 
         $scope.article.Tags = "";
 
@@ -102,23 +102,28 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
         }
 
         $scope.addTag = function (tag) {
+            $scope.tabTags = $scope.article.Tags.length > 0 ? $scope.article.Tags.split(',') : [];
+
             //Recherche dans le tableau
             var exist = false;
             var id = 0;
-            for (var i = 0; i < $scope.article.tabTags.length; i++) {
-                if ($scope.article.tabTags[i] == tag.Name) {
+            for (var i = 0; i < $scope.tabTags.length; i++) {
+                if ($scope.tabTags[i] == tag.Name) {
                     exist = true;
                     id = i;
                 }
             }
+
             if (exist === false) {
                 //Si existe pas alors ...
-                $scope.article.tabTags.push(tag.Name);
+                // $scope.article.tabTags 
+                $scope.tabTags.push(tag.Name);
             } else {
                 //...sinon enlever du tableau
-                $scope.article.tabTags.splice(id, 1);
+                $scope.tabTags.splice(id, 1);
             }
-            $scope.article.Tags = $scope.article.tabTags.join(',');
+
+            $scope.article.Tags = $scope.tabTags.join(",");
         }
     }
 ]);
