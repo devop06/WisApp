@@ -141,7 +141,6 @@
     <Content Include="Content\view\intro.html" />
     <Content Include="Content\view\index.html" />
     <Content Include="Content\view\map.html" />
-    <Content Include="Content\view\partager_ori.html" />
     <Content Include="Global.asax" />
     <Content Include="Icon.png" />
     <Content Include="Scripts\angular-animate.js" />
