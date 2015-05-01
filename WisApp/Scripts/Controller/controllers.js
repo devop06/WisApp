@@ -8,19 +8,6 @@ wisControllers.controller('indexCtrl', function ($scope, $http, $log) {
                  $scope.Articles = data;
                 
              });
-
-    $http.get("/api/Articles/getNombreArticle")
-                 .success(function (data) {
-                     $scope.totalItems = data;
-                     $scope.currentPage = 1;
-                     $scope.maxPerPage = 5;
-                     $scope.setPage = function (pageNo) {
-                         $scope.currentPage = pageNo;
-                     };
-
-                     $scope.bigTotalItems = 175;
-                     $scope.bigCurrentPage = 1;
-                 });
 });
 
 wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService', '$location', 'HubService',
