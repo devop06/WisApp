@@ -124,5 +124,11 @@ namespace WisApp.Controllers
         {
             FormsAuthentication.SignOut();
         }
+
+        [HttpPost]
+        public void addCategories(List<Categorie> categories)
+        {
+            ModelConnection.user1.categories = categories;
+        }
     }
 }

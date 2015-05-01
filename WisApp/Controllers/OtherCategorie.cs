@@ -5,7 +5,6 @@ using System.Text;
 using WisApp.Controllers;
 using WisApp.Models;
 
-
 namespace ExCategorie.Controllers
 {
     public class OtherCategorie
@@ -15,7 +14,6 @@ namespace ExCategorie.Controllers
 
         }
 
-        public int id { get; set; }
         public string Name { get; set; }
         public List<Article> Articles { get; set; }
     }
