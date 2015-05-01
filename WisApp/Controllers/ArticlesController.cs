@@ -39,6 +39,7 @@ namespace WisApp.Controllers
         
         //Ajouter un Article
         // POST: api/Articles
+        [Authorize]
         [ResponseType(typeof(Article))]
         public IHttpActionResult PostArticle(Article data)
         {

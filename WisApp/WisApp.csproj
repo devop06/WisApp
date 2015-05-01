@@ -141,7 +141,6 @@
     <Content Include="Content\view\intro.html" />
     <Content Include="Content\view\index.html" />
     <Content Include="Content\view\map.html" />
-    <Content Include="Content\view\partager_ori.html" />
     <Content Include="Global.asax" />
     <Content Include="Icon.png" />
     <Content Include="Scripts\angular-animate.js" />
@@ -189,6 +188,7 @@
     <Content Include="Scripts\css\ripples.min.css" />
     <Content Include="Scripts\css\roboto.css" />
     <Content Include="Scripts\css\roboto.min.css" />
+    <Content Include="Scripts\js\dirPagination.js" />
     <Content Include="Scripts\fonts\LICENSE.txt" />
     <Content Include="Scripts\css\bootstrap-theme.css.map" />
     <Content Include="Scripts\css\bootstrap.css.map" />
