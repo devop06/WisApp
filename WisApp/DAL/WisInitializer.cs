@@ -43,7 +43,7 @@ namespace WisApp.DAL
                 Image = "http://s3.lprs1.fr/images/2015/03/23/4630387_valloutg_545x460_autocrop.jpg",
                 
 
-                Latitude = 48.839695,
+                Latitude = 48.839695, 
                 Longitude = 2.239912
             },
             new Article()
@@ -58,8 +58,8 @@ namespace WisApp.DAL
                 Image = "http://i1.eurosport.com/2015/03/29/1446228-30921410-1600-900.jpg", 
                 
 
-                Latitude = 48.61237, 
-                Longitude = 1.9084890000000314 
+                Latitude = 48.612377, 
+                Longitude = 1.908500
             },
 
             
@@ -74,8 +74,8 @@ namespace WisApp.DAL
                 Image = "http://s3.lprs1.fr/images/2015/03/23/4629749_ashya-king_545x460_autocrop.jpg",
                 
 
-                Longitude = -1.404350900000054,
-                Latitude = 50.9097
+                Longitude = 51.5030439,
+                Latitude = -0.1304626
             },
             new Article()
             {
@@ -88,8 +88,8 @@ namespace WisApp.DAL
                 Image = "http://md1.libe.com/photo/725598-une-montre-de-l-horloger-suisse-corum-rachete-par-le-groupe-chinois-citychamp-watch-jewellery-group-.jpg?modified_at=1427116504&width=750",
                 
 
-                Latitude = 47.563982,
-                Longitude = 7.600940000000037
+                Latitude = 47.563954, 
+                Longitude = 7.600939
             },
             new Article()
             {
@@ -102,8 +102,8 @@ namespace WisApp.DAL
                 Image = "http://s3.lprs1.fr/images/2015/03/20/4620931_capture_545x460_autocrop.PNG",
                 
 
-                Latitude = 48.852521,
-                Longitude = 2.278220000000033
+                Latitude = 48.852712, 
+                Longitude = 2.278184
             }
             };
             articles.ForEach(s => context.Article.Add(s));
