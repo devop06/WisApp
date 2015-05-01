@@ -21,9 +21,7 @@ wisControllers.controller('indexCtrl', function ($scope, $http, $log) {
                      $scope.bigTotalItems = 175;
                      $scope.bigCurrentPage = 1;
                  });
-   
-
-	});
+});
 
 wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService', '$location', 'HubService',
     function ($scope, $http, geolocation, $location, HubService) {
@@ -192,8 +190,7 @@ wisControllers.controller('compteCtrl', ['$scope', function ($scope) {
     $scope.toggle = function () {
         $scope.myVar = !$scope.myVar;
     };
-    $scope.checkModifCompte = function () {
-        
+    $scope.checkModifCompte = function () {    
        alert('modification');
            
     };
@@ -303,7 +300,7 @@ wisControllers.controller('mapCtrl', function ($scope, uiGmapGoogleMapApi, $http
         navigator.geolocation.getCurrentPosition(function (position) {
                          
 
-            $scope.map = { center: { latitude: position.coords.latitude, longitude: position.coords.longitude }, zoom: 18 };
+            $scope.map = { center: { latitude: position.coords.latitude, longitude: position.coords.longitude }, zoom: 14 };
             $scope.options = {
                 scrollwheel: true
             };
