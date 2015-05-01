@@ -1,17 +1,12 @@
-<div>
-<div class="jumbotron col-md-6 col-md-offset-3" ng-repeat="article in Articles "><!-- | limitTo: maxPerPage -->
-    <p class="col-sm-8"><b>{{article.Titre}}</b></p>
-    <h6 class="col-sm-4">Publi&eacute; &agrave; : {{article.Heure}}</h6>
-    <h4 class="col-sm-12">{{article.Description}}</h4>
-    <a class="col-sm-offset-10 col-xs-offset-8" href="#/article/{{article.id}}">Voir l'article</a>
-   
-</div>
+<!-- <div> -->
+    <div class="jumbotron col-md-6 col-md-offset-3" dir-paginate="article in Articles | itemsPerPage: 5">
+        <!-- | limitTo: maxPerPage -->
+        <p class="col-sm-8"><b>{{article.Titre}}</b></p>
+        <h6 class="col-sm-4">Publi&eacute; &agrave; : {{article.Heure}}</h6>
+        <h4 class="col-sm-12">{{article.Description}}</h4>
+        <a class="col-sm-offset-10 col-xs-offset-8" href="#/article/{{article.id}}">Voir l'article</a>
 
-<div class="row">
-    <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" items-per-page="maxPerPage"></pagination>  
-</div>
-
-</div>    
+    </div>
 
 <div class="disparition" style="position: fixed; bottom: 0px;">
     <div class="container">
@@ -19,5 +14,12 @@
         
     </div>
 </div>
-        
 
+
+
+<!-- </div>-->
+
+
+<div class="col-md-6 col-md-offset-3 text-center">
+    <dir-pagination-controls></dir-pagination-controls>
+</div>

@@ -141,7 +141,6 @@
     <Content Include="Content\view\intro.html" />
     <Content Include="Content\view\index.html" />
     <Content Include="Content\view\map.html" />
-    <Content Include="Content\view\partager_ori.html" />
     <Content Include="Global.asax" />
     <Content Include="Icon.png" />
     <Content Include="Scripts\angular-animate.js" />
@@ -165,10 +164,6 @@
     <Content Include="Scripts\angular-scenario.js" />
     <Content Include="Scripts\angular-touch.js" />
     <Content Include="Scripts\angular-touch.min.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -193,6 +188,7 @@
     <Content Include="Scripts\css\ripples.min.css" />
     <Content Include="Scripts\css\roboto.css" />
     <Content Include="Scripts\css\roboto.min.css" />
+    <Content Include="Scripts\js\dirPagination.js" />
     <Content Include="Scripts\fonts\LICENSE.txt" />
     <Content Include="Scripts\css\bootstrap-theme.css.map" />
     <Content Include="Scripts\css\bootstrap.css.map" />
