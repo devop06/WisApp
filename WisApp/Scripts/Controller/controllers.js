@@ -107,7 +107,7 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
             $scope.article.Longitude = position.coords.longitude;
             $scope.message = "Position recuperer !";
         }, function (reason) {
-            $scope.message = "Votre position ne peut être determinee."
+            $scope.message = "Votre position ne peut être determin\u00E9e."
         });
 
 
@@ -257,7 +257,7 @@ wisControllers.controller('articleCtrl', ['$scope', '$location', '$http', '$rout
                  $route.reload();
              })
         .error(function () {
-            alert("Impossible vous n'etes pas connecte !")
+            alert("Impossible vous n'\u00EAtes pas connect\u00E9 !")
             $location.path('/connection');
 
         });
@@ -270,7 +270,7 @@ wisControllers.controller('articleCtrl', ['$scope', '$location', '$http', '$rout
                  $route.reload();
              })
         .error(function () {
-            alert("Impossible vous n'etes pas connecte !")
+            alert("Impossible vous n'\u00EAtes pas connect\u00E9 !")
             $location.path('/connection');
 
         });
@@ -285,7 +285,7 @@ wisControllers.controller('compteCtrl', ['$scope', '$location', '$http', functio
     $scope.disconnect = function () {
         $http.get("/api/Users/DisconnectUser")
             .success(function () {
-                alert("vous etes bien deconnecte !")
+                alert("vous \u00EAtes bien d\u00E9connect\u00E9 !")
                 $location.path('/connection');
             })
         .error(function () {
@@ -298,7 +298,7 @@ wisControllers.controller('compteCtrl', ['$scope', '$location', '$http', functio
                
             })
             .error(function () {
-                alert('Vous devez etre connecter...');
+                alert('Vous devez etre connect\u00E9...');
                 $location.path('/connection');
             });
     $scope.myVar = false;
@@ -320,10 +320,14 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope,
         $scope.categories = data;
     });
 
-    /*$http.get('/api/User/User/categories').success(function (data) {
-        $scope.categoriesSelectionnees = data;
-    });*/
-
+    $http.get('/api/Users/getCategorieUser/7').success(function (data) {
+        console.log($scope.categoriesSelectionnees);
+        var select = data;
+        console.log(select);
+        if (select != null) {
+            $scope.categoriesSelectionnees = select;
+        }
+    });
     $scope.categoriesSelectionnees = [];
 
     $scope.selectionnerCategorie = function (categorie) {
@@ -350,10 +354,10 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope,
     $scope.validerCategorie = function () {
         $http.post('/api/Users/addCategories', $scope.categoriesSelectionnees)
             .success(function (data) {
-                alert("Ajout réussi");
+                alert("Ajout r\u00E9ussi");
             })
             .error(function () {
-                alert('Ajout non effectué');
+                alert('Ajout non effectu\u00E9');
             });
 
     };

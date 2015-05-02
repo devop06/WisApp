@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WisApp.Controllers;
+using WisApp.DAL;
 using WisApp.Models;
 
 namespace ExCategorie.Controllers
 {
     public class CategorieController : ApiController
     {
+        private Wis2Context db = new Wis2Context();
+
         [HttpGet]
         public List<Categorie> Categorie()
         {
             List<Categorie> resultat = new List<Categorie>();
-            List<Article> article;/* = new List<Article>();*/
+            List<Article> article;
             var uneCategorie = new Categorie();
             uneCategorie.Name = "Politique";
             resultat.Add(uneCategorie);
@@ -30,9 +34,11 @@ namespace ExCategorie.Controllers
             resultat.Add(uneCategorie);
             uneCategorie = new Categorie();
             uneCategorie.Name = "Art";
+            uneCategorie = new Categorie();
+            uneCategorie.Name = "Faits divers";
             resultat.Add(uneCategorie);
 
-            List<Article> articles = new List<Article>();/* = HomeController.Articles();*/
+            List<Article> articles = new List<Article>();
             Article art = new Article();
             art.Titre = "Tennis";
             art.Categorie = "Sport";
@@ -45,6 +51,10 @@ namespace ExCategorie.Controllers
             art.Titre = "Parti de gauche";
             art.Categorie = "Politique";
             articles.Add(art);
+
+            ArticlesController h = new ArticlesController();
+            IQueryable<Article> arts = h.GetArticle();
+            articles = arts.ToList<Article>();
 
             for (int i = 0; i < resultat.Count(); i++) //pour le nb de categories
             {
