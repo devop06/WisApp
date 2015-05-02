@@ -193,7 +193,7 @@ wisControllers.controller('articleCtrl', ['$scope', '$location', '$http', '$rout
                  $route.reload();
              })
         .error(function () {
-            alert("Impossible vous n'etes pas connecte !")
+            alert("Impossible vous n'\u00EAtes pas connect\u00E9 !")
             $location.path('/connection');
 
         });
@@ -206,7 +206,7 @@ wisControllers.controller('articleCtrl', ['$scope', '$location', '$http', '$rout
                  $route.reload();
              })
         .error(function () {
-            alert("Impossible vous n'etes pas connecte !")
+            alert("Impossible vous n'\u00EAtes pas connect\u00E9 !")
             $location.path('/connection');
 
         });
@@ -221,7 +221,7 @@ wisControllers.controller('compteCtrl', ['$scope', '$location', '$http', functio
     $scope.disconnect = function () {
         $http.get("/api/Users/DisconnectUser")
             .success(function () {
-                alert("vous etes bien deconnecte !")
+                alert("vous \u00EAtes bien d\u00E9connect\u00E9 !")
                 $location.path('/connection');
             })
         .error(function () {
@@ -234,7 +234,7 @@ wisControllers.controller('compteCtrl', ['$scope', '$location', '$http', functio
                
             })
             .error(function () {
-                alert('Vous devez etre connecter...');
+                alert('Vous devez etre connect\u00E9...');
                 $location.path('/connection');
             });
     $scope.myVar = false;
