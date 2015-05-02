@@ -251,10 +251,14 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope,
         $scope.categories = data;
     });
 
-    /*$http.get('/api/User/User/categories').success(function (data) {
-        $scope.categoriesSelectionnees = data;
-    });*/
-
+    $http.get('/api/Users/getCategorieUser/7').success(function (data) {
+        console.log($scope.categoriesSelectionnees);
+        var select = data;
+        console.log(select);
+        if (select != null) {
+            $scope.categoriesSelectionnees = select;
+        }
+    });
     $scope.categoriesSelectionnees = [];
 
     $scope.selectionnerCategorie = function (categorie) {

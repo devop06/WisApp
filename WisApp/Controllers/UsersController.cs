@@ -128,7 +128,16 @@ namespace WisApp.Controllers
         [HttpPost]
         public void addCategories(List<Categorie> categories)
         {
-            ModelConnection.user1.categories = categories;
+            User user = db.User.Find(getIDCurrentUser());
+            user.categories = categories;
+            //ModelConnection.user1.categories = categories;
+        }
+
+        [HttpGet]
+        public List<Categorie> getCategorieUser(int id)
+        {
+            User user = db.User.Find(id);
+            return user.categories;
         }
     }
 }
