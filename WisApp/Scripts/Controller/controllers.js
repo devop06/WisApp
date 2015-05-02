@@ -35,7 +35,7 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
             $scope.article.Longitude = position.coords.longitude;
             $scope.message = "Position recuperer !";
         }, function (reason) {
-            $scope.message = "Votre position ne peut être determinee."
+            $scope.message = "Votre position ne peut être determin\u00E9e."
         });
 
         // Reference the proxy for the hub.  
@@ -290,10 +290,10 @@ wisControllers.controller('categorieCtrl', ['$scope', '$http', function ($scope,
     $scope.validerCategorie = function () {
         $http.post('/api/Users/addCategories', $scope.categoriesSelectionnees)
             .success(function (data) {
-                alert("Ajout réussi");
+                alert("Ajout r\u00E9ussi");
             })
             .error(function () {
-                alert('Ajout non effectué');
+                alert('Ajout non effectu\u00E9');
             });
 
     };
