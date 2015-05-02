@@ -73,7 +73,7 @@ wisControllers.controller('indexCtrl', ['$scope', '$http', '$log', 'HubService',
              });
 
     // Reference the proxy for the hub.  
-	    HubService.article.client.onArticleChanged["IndecCtrl"] = function (article) {
+	    HubService.article.client.onArticleChanged["IndexCtrl"] = function (article) {
 	        //alert(article.Titre);
 	        //if (document.location.href == "http://localhost:52454/Content/index.html#/" || document.location.href == "http://localhost:52454/content/#/") {
 	        window.location.reload();
