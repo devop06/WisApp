@@ -169,7 +169,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Controller\app.js" />
-    <Content Include="Scripts\Controller\push.js" />
     <Content Include="Scripts\css\appCategorie.css" />
     <Content Include="Scripts\css\bootstrap-theme.css" />
     <Content Include="Scripts\css\bootstrap-theme.min.css" />
