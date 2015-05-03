@@ -78,7 +78,7 @@ wisControllers.controller('indexCtrl', ['$scope', '$http', '$log', 'HubService',
 	        //if (document.location.href == "http://localhost:52454/Content/index.html#/" || document.location.href == "http://localhost:52454/content/#/") {
 	        //window.location.reload();
 	        //}
-	        //$scope.Articles.push(article);
+	        $scope.Articles.push(article);
 	        $route.reload();
 	    };
 
