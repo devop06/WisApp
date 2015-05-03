@@ -63,7 +63,7 @@ wisControllers.factory('HubService', [function () {
     };
 }]);
 
-wisControllers.controller('indexCtrl', ['$scope', '$http', '$log', 'HubService', function ($scope, $http, $log, HubService) {
+wisControllers.controller('indexCtrl', ['$scope', '$http', '$log', 'HubService', '$route', function ($scope, $http, $log, HubService, $route) {
 
 
 	    $http.get("/api/Articles/GetArticle/")
@@ -76,8 +76,10 @@ wisControllers.controller('indexCtrl', ['$scope', '$http', '$log', 'HubService',
 	    HubService.article.client.onArticleChanged["IndexCtrl"] = function (article) {
 	        //alert(article.Titre);
 	        //if (document.location.href == "http://localhost:52454/Content/index.html#/" || document.location.href == "http://localhost:52454/content/#/") {
-	        window.location.reload();
+	        //window.location.reload();
 	        //}
+	        //$scope.Articles.push(article);
+	        $route.reload();
 	    };
 
 }]);

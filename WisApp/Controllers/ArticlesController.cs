@@ -20,7 +20,7 @@ namespace WisApp.Controllers
         // GET: api/Articles/GetArticle/
         public IQueryable<Article> GetArticle()
         {
-            return db.Article;
+            return db.Article.OrderByDescending(a => a.id);
         }
 
         // GET: api/Articles/GetArticle/4
