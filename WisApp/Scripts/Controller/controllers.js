@@ -195,7 +195,7 @@ wisControllers.controller('creerCtrl', ['$scope', '$http', 'GeolocationService',
 ]);
     
 
-wisControllers.controller('partagerCtrl', ['$scope', '$location', '$http', '$routeParams', function ($scope, $location, $http, $routeParams) {
+wisControllers.controller('partagerCtrl', ['$scope', '$location', '$http', '$routeParams', 'HubService', function ($scope, $location, $http, $routeParams, HubService) {
 
     var id = $routeParams.id;
     var routeApi = "/api/Articles/GetArticle/" + id;
@@ -215,6 +215,7 @@ wisControllers.controller('partagerCtrl', ['$scope', '$location', '$http', '$rou
                 })
           .success(function (data) {
               $scope.article = data;
+              HubService.article.server.notifyArticle(data);
           })
           .error(function () {
               alert('Impossible de publier sans se connecter !');
