@@ -216,6 +216,8 @@ wisControllers.controller('partagerCtrl', ['$scope', '$location', '$http', '$rou
           .success(function (data) {
               $scope.article = data;
               HubService.article.server.notifyArticle(data);
+              id++;
+              $location.path('/article/'+id);
           })
           .error(function () {
               alert('Impossible de publier sans se connecter !');
