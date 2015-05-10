@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace WisApp.Controllers
+namespace WisApp.Models
 {
     public class MapController : ApiController
     {

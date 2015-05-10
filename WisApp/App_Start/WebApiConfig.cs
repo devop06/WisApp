@@ -12,7 +12,7 @@ namespace WisApp
             // Configuration et services API Web
 
             // Itinéraires de l'API Web
-            config.MapHttpAttributeRoutes();
+            
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

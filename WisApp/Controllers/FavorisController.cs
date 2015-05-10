@@ -7,7 +7,7 @@ using System.Web.Http;
 using WisApp.Models;
 using WisApp.DAL;
 
-namespace WisApp.Controllers
+namespace WisApp.Models
 {
     public class FavorisController : ApiController
     {

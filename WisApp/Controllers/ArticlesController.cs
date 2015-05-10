@@ -11,7 +11,7 @@ using System.Web.Http.Description;
 using WisApp.DAL;
 using WisApp.Models;
 
-namespace WisApp.Controllers
+namespace WisApp.Models
 {
     public class ArticlesController : ApiController
     {

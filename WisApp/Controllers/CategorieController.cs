@@ -5,11 +5,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using WisApp.Controllers;
+using WisApp.Models;
 using WisApp.DAL;
 using WisApp.Models;
 
-namespace ExCategorie.Controllers
+namespace ExCategorie.Models
 {
     public class CategorieController : ApiController
     {

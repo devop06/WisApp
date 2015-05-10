@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using WisApp.Models;
-using WisApp.Controllers;
+using WisApp.Models;
 
 namespace WisApp.DAL
 {
